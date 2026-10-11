@@ -13,15 +13,15 @@
   padding: 0 16px 0 12px;
   border: 2px solid var(--papier, #fff);
   border-radius: 30px;
-  background: var(--tinte, #1d2b4a);
+  background: var(--tiefblau, #1d2b4a);
   color: #fff;
   font: 700 1rem/1 var(--sans, sans-serif);
   box-shadow: 0 8px 20px rgba(0,0,0,.25);
   cursor: pointer;
 }
 .a11y-knopf svg { width: 28px; height: 28px; }
-.a11y-knopf:hover { background: var(--tinte-tief, #121c33); }
-.a11y-knopf:focus-visible { outline: 3px solid var(--apricot, #f2b48a); outline-offset: 3px; }
+.a11y-knopf:hover { background: var(--tiefblau-dunkel, #121c33); }
+.a11y-knopf:focus-visible { outline: 3px solid var(--blau, #2f6db5); outline-offset: 3px; }
 
 .a11y-menue {
   position: fixed;
@@ -34,7 +34,7 @@
   padding: 16px 18px 18px;
   background: #fff;
   color: #1c2333;
-  border: 2px solid var(--tinte, #1d2b4a);
+  border: 2px solid var(--tiefblau, #1d2b4a);
   border-radius: 10px;
   box-shadow: 0 20px 50px -10px rgba(0,0,0,.35);
   font-family: var(--sans, sans-serif);
@@ -51,15 +51,15 @@
   color: inherit;
   cursor: pointer;
 }
-.a11y-zu:hover { background: #f1ece4; }
+.a11y-zu:hover { background: #edf4f9; }
 .a11y-label { margin: 6px 0 6px; font-weight: 700; }
 .a11y-schrift { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .a11y-schrift button {
   width: 56px; min-height: 48px;
-  border: 2px solid var(--tinte, #1d2b4a);
+  border: 2px solid var(--tiefblau, #1d2b4a);
   border-radius: 6px;
   background: #fff;
-  color: var(--tinte, #1d2b4a);
+  color: var(--tiefblau, #1d2b4a);
   font: 700 1.1rem/1 var(--sans, sans-serif);
   cursor: pointer;
 }
@@ -73,7 +73,7 @@
   min-height: 48px;
   margin-top: 6px;
   padding: 8px 12px;
-  border: 1.5px solid #c9c2b6;
+  border: 1.5px solid #b8c6d2;
   border-radius: 6px;
   background: #fff;
   color: #1c2333;
@@ -84,12 +84,12 @@
 .a11y-haken {
   flex-shrink: 0;
   width: 22px; height: 22px;
-  border: 2px solid var(--tinte, #1d2b4a);
+  border: 2px solid var(--tiefblau, #1d2b4a);
   border-radius: 4px;
   position: relative;
 }
-.a11y-schalter[aria-pressed="true"] { border-color: var(--tinte, #1d2b4a); background: #fbe3d1; font-weight: 700; }
-.a11y-schalter[aria-pressed="true"] .a11y-haken { background: var(--tinte, #1d2b4a); }
+.a11y-schalter[aria-pressed="true"] { border-color: var(--tiefblau, #1d2b4a); background: var(--pfirsich-hell, #ffe6d6); font-weight: 700; }
+.a11y-schalter[aria-pressed="true"] .a11y-haken { background: var(--tiefblau, #1d2b4a); }
 .a11y-schalter[aria-pressed="true"] .a11y-haken::after {
   content: "";
   position: absolute;
@@ -99,8 +99,8 @@
   border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg);
 }
-.a11y-reset { justify-content: center; margin-top: 12px; font-weight: 700; background: #f4eee4; }
-.a11y-menue button:focus-visible { outline: 3px solid var(--terrakotta, #a2471f); outline-offset: 2px; }
+.a11y-reset { justify-content: center; margin-top: 12px; font-weight: 700; background: #edf4f9; }
+.a11y-menue button:focus-visible { outline: 3px solid var(--akzent, #a2471f); outline-offset: 2px; }
 
 /* Handy hoch: über der Leiste unten, nur Symbol */
 @media (max-width: 720px) and (min-height: 501px) {
@@ -122,17 +122,25 @@ html.a11y-schrift-1 { font-size: 112.5%; }
 html.a11y-schrift-2 { font-size: 125%; }
 html.a11y-schrift-3 { font-size: 137.5%; }
 
-/* Hoher Kontrast: Grautöne werden schwarz, Flächen weiß, Linien kräftig */
+/* Hoher Kontrast: Grautöne werden schwarz, Flächen weiß, Blau dunkler, Linien kräftig */
 html.a11y-kontrast {
-  --grau: #1c2333;
-  --linie: #4a4f5a;
-  --papier: #ffffff;
-  --papier-2: #ffffff;
-  --sand: #ffffff;
-  --tinte: #0c1428;
-  --terrakotta: #7a2e0e;
+  --text: #000;
+  --grau: #1a1a1a;
+  --linie: #4a4a4a;
+  --papier: #fff;
+  --papier-2: #fff;
+  --sand: #fff;
+  --himmel: #fff;
+  --himmel-hell: #fff;
+  --blau: #123f6e;
+  --blau-dunkel: #0b2c4f;
+  --akzent: #123f6e;
+  --tiefblau: #0f2a3d;
 }
-html.a11y-kontrast .hero-sub,
+html.a11y-kontrast .hero-bereich,
+html.a11y-kontrast .hero { background: #fff; border-bottom: 2px solid #000; }
+html.a11y-kontrast .hero-sub { color: #000; }
+html.a11y-kontrast .hero-chip { background: #fff; color: #000; border: 2px solid #000; }
 html.a11y-kontrast .notfall p,
 html.a11y-kontrast .fuss,
 html.a11y-kontrast .footer { color: #fff !important; }
@@ -140,9 +148,9 @@ html.a11y-kontrast .kachel,
 html.a11y-kontrast .punkt,
 html.a11y-kontrast .zeiten-karte,
 html.a11y-kontrast .termin-form,
-html.a11y-kontrast .gruss-platz { box-shadow: none; border: 2px solid #1c2333; }
+html.a11y-kontrast .gruss-platz { box-shadow: none; border: 2px solid #000; }
 html.a11y-kontrast .feld input[type="text"],
-html.a11y-kontrast .feld textarea { border: 2px solid #1c2333; }
+html.a11y-kontrast .feld textarea { border: 2px solid #000; }
 
 /* Links unterstreichen */
 html.a11y-links a { text-decoration: underline !important; text-decoration-thickness: 2px !important; text-underline-offset: 3px; }
