@@ -809,3 +809,7 @@ section[id] { scroll-margin-top: 64px; }
   border-radius: 6px;
 }
 .skip:focus { top: 12px; color: #fff; }
+
+/* Entlastung hervorheben: die wichtigste Kachel */
+.kachel-betont { border-top: 4px solid var(--terrakotta); background: var(--apricot-hell); }
+.link-pfeil { font-weight: 700; color: var(--terrakotta); text-underline-offset: 3px; }
