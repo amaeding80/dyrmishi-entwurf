@@ -6,24 +6,26 @@
 <title>Hausarztpraxis Dr. med. Erion Dyrmishi &middot; Oberschleißheim (Entwurf)</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Entwurf: Hausarztpraxis Dr. med. Erion Dyrmishi, hausärztlich tätiger Internist, Mittenheimer Str. 52, 85764 Oberschleißheim">
-<meta name="theme-color" content="#2e6b48">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%236bb985'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23fff' font-family='Georgia'%3EED%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#1d2b4a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d2b4a'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23f2b48a' font-family='Georgia'%3EED%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="../fonts/lora-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/seite.css">
 <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
 
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
 <!-- Hinweis Entwurf - klein, damit es nicht stört -->
 <p class="entwurf-hinweis">Entwurf zur Ansicht &middot; <a href="../">zurück zur Analyse</a></p>
 
 <header class="kopf">
   <div class="wrap kopf-inner">
-    <a class="logo" href="#top">
+    <a class="logo" href="#inhalt">
       <span class="logo-zeichen" aria-hidden="true">ED</span>
       <span class="logo-text">
         <span class="logo-name">Praxis Dr. med. Erion Dyrmishi</span>
-        <span class="logo-sub">Hausärztlich tätiger Internist &middot; Oberschleißheim</span>
+        <span class="logo-sub"><span class="nur-breit">Hausärztlich tätiger </span><span class="nur-schmal">Hausärztlicher </span>Internist &middot; Oberschleißheim</span>
       </span>
     </a>
     <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="hauptmenue"><span></span><span></span><span></span></button>
@@ -37,60 +39,63 @@
   </div>
 </header>
 
-<main id="top">
+<main id="inhalt" tabindex="-1">
 
-<!-- Hero - kein Foto, nur Schrift, Farbe und weiche Formen -->
+<!-- Hero - dunkle Farbfläche statt Foto, Übernahme steht im wichtigsten Satz -->
 <section class="hero-bereich">
   <div class="wrap hero">
     <div class="hero-text">
-      <p class="hero-ort">Hausarztpraxis im HIT-Gebäude, Oberschleißheim</p>
-      <h1 class="hero-titel">Ihre Hausarztpraxis in Oberschleißheim &ndash; <em>vertraut wie bisher.</em></h1>
-      <p class="hero-sub">Seit 1. Oktober 2026 führt Dr. med. Erion Dyrmishi, hausärztlich tätiger Internist, die Praxis von Frau Dr. Bajorski-Brandt weiter. In denselben Räumen und mit dem bewährten Praxisteam.</p>
+      <p class="hero-chip">Seit 1. Oktober 2026</p>
+      <h1 class="hero-titel">Ihre Hausarztpraxis in Oberschleißheim &ndash; <span class="unterstrich">jetzt mit Dr.&nbsp;Dyrmishi.</span></h1>
+      <p class="hero-sub">Dr. med. Erion Dyrmishi, hausärztlich tätiger Internist, führt die Praxis von Frau Dr. Bajorski-Brandt weiter. An der gewohnten Adresse und mit dem bewährten Praxisteam.</p>
       <div class="hero-btns">
-        <a href="tel:+498937558460" class="btn btn-primaer">
+        <a href="tel:+498937558460" class="btn btn-hell hero-anruf">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
           089&nbsp;3755&nbsp;8460 anrufen
         </a>
-        <a href="#sprechzeiten" class="btn btn-rahmen">Sprechzeiten</a>
+        <a href="#neu" class="btn btn-rahmen-hell">Neu in der Praxis?</a>
       </div>
-      <ul class="hero-trust">
-        <li>Hausärztlich tätiger Internist</li>
-        <li>Bewährtes Praxisteam</li>
-        <li>Mittenheimer Str. 52, 1. Stock</li>
-      </ul>
     </div>
 
-    <!-- Sprechzeiten-Karte statt Foto, heute per JS markiert -->
-    <aside class="zeiten-karte" aria-label="Sprechzeiten auf einen Blick">
-      <h2 class="karte-titel">Sprechzeiten</h2>
-      <table class="js-zeiten">
+    <!-- Sprechzeiten-Karte statt Foto. Handy: nur "Heute" + Telefon (per CSS/JS) -->
+    <aside class="zeiten-karte" aria-labelledby="karte-titel">
+      <h2 class="karte-titel" id="karte-titel">Sprechzeiten</h2>
+      <p class="heute-zeile js-heute" hidden></p>
+      <table class="js-zeiten karte-tabelle">
         <tr data-tag="1"><th scope="row">Mo.</th><td>08:00&ndash;12:00 &middot; 14:00&ndash;18:00</td></tr>
         <tr data-tag="2"><th scope="row">Di.</th><td>08:00&ndash;13:00</td></tr>
         <tr data-tag="3"><th scope="row">Mi.</th><td>08:00&ndash;12:00</td></tr>
         <tr data-tag="4"><th scope="row">Do.</th><td>08:00&ndash;12:00 &middot; 13:00&ndash;17:00</td></tr>
         <tr data-tag="5"><th scope="row">Fr.</th><td>08:00&ndash;12:00</td></tr>
       </table>
-      <a class="zeiten-tel" href="tel:+498937558460">089&nbsp;3755&nbsp;8460</a>
-      <p class="zeiten-notfall">Außerhalb der Sprechzeiten: Ärztlicher Bereitschaftsdienst <a href="tel:116117">116&nbsp;117</a>, im Notfall <a href="tel:112">112</a>.</p>
+      <a class="zeiten-tel" href="tel:+498937558460"><span class="nur-handy">Anrufen: </span>089&nbsp;3755&nbsp;8460</a>
+      <a class="alle-zeiten" href="#sprechzeiten">Alle Sprechzeiten und Notdienst &rarr;</a>
     </aside>
   </div>
+</section>
 
-  <!-- was gleich bleibt - nur Fakten von der jetzigen Seite -->
-  <div class="wrap bleibt">
-    <div class="bleibt-punkt">
-      <svg class="bleibt-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V9l8-6 8 6v12h-5v-6H9v6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      <b>Gleiche Räume</b>
-      <span>Mittenheimer Str. 52, HIT-Gebäude, 1.&nbsp;Stock</span>
+<!-- Zwei Wege: wer schon da war / wer neu ist (Idee von One Medical) -->
+<section class="wege" aria-label="Schnellzugang">
+  <div class="wrap wege-inner">
+    <div class="weg weg-stamm">
+      <h2 class="weg-titel">Sie kennen uns schon?</h2>
+      <p class="weg-text">Dann ist vieles wie gewohnt:</p>
+      <ul class="weg-liste">
+        <li><h3>Gleiche Adresse</h3><p>Mittenheimer Str. 52, HIT-Gebäude, 1.&nbsp;Stock</p></li>
+        <li><h3>Gleiche Nummern</h3><p>Telefon und Fax bleiben, wie sie sind.</p></li>
+        <li><h3>Vertraute Gesichter</h3><p>Das bewährte Praxisteam ist weiter für Sie da.</p></li>
+      </ul>
     </div>
-    <div class="bleibt-punkt">
-      <svg class="bleibt-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      <b>Gleiche Nummer</b>
-      <span>Telefon 089&nbsp;3755&nbsp;8460, Fax 089&nbsp;3755&nbsp;8461</span>
-    </div>
-    <div class="bleibt-punkt">
-      <svg class="bleibt-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="16.5" cy="9" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.3c.6-.2 1.3-.3 2-.3 2.5 0 4.5 2 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <b>Vertraute Gesichter</b>
-      <span>Das bewährte Praxisteam ist weiter für Sie da.</span>
+    <div class="weg weg-neu" id="neu">
+      <h2 class="weg-titel">Zum ersten Mal hier?</h2>
+      <p class="weg-text">Herzlich willkommen. Das Wichtigste für Ihren ersten Besuch:</p>
+      <!-- Platzhalter: Antworten mit Dr. Dyrmishi abstimmen, nichts erfinden -->
+      <ul class="weg-liste weg-fragen">
+        <li><h3>Brauche ich einen Termin?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
+        <li><h3>Was bringe ich mit?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
+        <li><h3>Gesetzlich oder privat versichert?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
+      </ul>
+      <p class="weg-links"><a href="#leistungen">Leistungen</a> <a href="#anfahrt">Anfahrt</a></p>
     </div>
   </div>
 </section>
@@ -108,7 +113,7 @@
         <figcaption>Dr. med. Alexandra Bajorski-Brandt</figcaption>
       </figure>
     </div>
-    <!-- Platzhalter: hier gehört ein Gruß von Dr. Dyrmishi selbst hin, nichts erfinden -->
+    <!-- Platzhalter: hier gehört ein Gruß von Dr. Dyrmishi selbst hin -->
     <div class="gruss-platz reveal">
       <span class="gruss-label">Platz für Ihre Begrüßung</span>
       <p class="gruss-titel">Liebe Patientinnen und Patienten,</p>
@@ -122,8 +127,7 @@
 <section class="abschnitt abschnitt-zeiten" id="sprechzeiten">
   <div class="wrap zeiten">
     <div>
-      <p class="eyebrow reveal">Sprechzeiten</p>
-      <h2 class="reveal">Wann wir für Sie da sind</h2>
+      <h2 class="reveal">Sprechzeiten</h2>
       <table class="zeiten-tabelle js-zeiten reveal">
         <tr data-tag="1"><th scope="row">Montag</th><td>08:00 &ndash; 12:00 Uhr</td><td>14:00 &ndash; 18:00 Uhr</td></tr>
         <tr data-tag="2"><th scope="row">Dienstag</th><td>08:00 &ndash; 13:00 Uhr</td><td></td></tr>
@@ -134,90 +138,59 @@
     </div>
     <div class="notfall reveal">
       <h3>Außerhalb der Sprechzeiten</h3>
-      <p>Den hausärztlichen Bereitschaftsdienst erreichen Sie unter</p>
+      <p>Ärztlicher Bereitschaftsdienst</p>
       <a class="notfall-nr" href="tel:116117">116 117</a>
-      <p>In dringenden Fällen wählen Sie bitte</p>
+      <p>Im Notfall</p>
       <a class="notfall-nr notfall-112" href="tel:112">112</a>
     </div>
   </div>
 </section>
 
-<!-- Leistungen - Auswahl aus dem bisherigen Praxisangebot, muss mit Dr. Dyrmishi abgestimmt werden -->
+<!-- Leistungen - schlichte Liste statt Kacheln. Auswahl aus dem bisherigen Angebot, wird abgestimmt -->
 <section class="abschnitt abschnitt-leistungen" id="leistungen">
   <div class="wrap">
-    <p class="eyebrow reveal">Leistungen</p>
     <h2 class="reveal">Hausärztliche Versorgung</h2>
     <p class="abschnitt-text reveal">Als Ihre Hausarztpraxis sind wir die erste Anlaufstelle bei gesundheitlichen Fragen und begleiten Sie auch langfristig.</p>
-    <div class="leistungen">
-      <div class="leistung reveal">
-        <svg class="leistung-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
-        <h3>Vorsorge</h3>
-        <p>Gesundheitsuntersuchung, Krebsvorsorge und Hautkrebs-Screening.</p>
-      </div>
-      <div class="leistung reveal">
-        <svg class="leistung-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 3 10 2-5h7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
-        <h3>Herz, Kreislauf &amp; Lunge</h3>
-        <p>EKG, Belastungs-EKG, 24-Stunden-Blutdruckmessung und Lungenfunktionstest.</p>
-      </div>
-      <div class="leistung reveal">
-        <svg class="leistung-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19a7 7 0 0 1 14 0z M12 5v7 M9 8l3-3 3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
-        <h3>Ultraschall</h3>
-        <p>Untersuchung von Bauch und Schilddrüse.</p>
-      </div>
-      <div class="leistung reveal">
-        <svg class="leistung-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6M17 7l-9 9-3 1 1-3 9-9M4 20l2-2M11 10l3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
-        <h3>Impfungen</h3>
-        <p>Impfberatung und Impfungen, auch vor Reisen.</p>
-      </div>
-      <div class="leistung reveal">
-        <svg class="leistung-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 10h16M9 3v4M15 3v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <h3>Chronische Erkrankungen</h3>
-        <p>Begleitung bei Diabetes, koronarer Herzkrankheit, Asthma und COPD (DMP).</p>
-      </div>
-      <div class="leistung reveal">
-        <svg class="leistung-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3M7.5 15h9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>
-        <h3>Labor</h3>
-        <p>Blutentnahme für Laboruntersuchungen, nach Voranmeldung.</p>
-      </div>
-    </div>
+    <dl class="leistungen reveal">
+      <div><dt>Vorsorge</dt><dd>Gesundheitsuntersuchung, Krebsvorsorge, Hautkrebs-Screening</dd></div>
+      <div><dt>Herz, Kreislauf &amp; Lunge</dt><dd>EKG, Belastungs-EKG, 24-Stunden-Blutdruck, Lungenfunktion</dd></div>
+      <div><dt>Ultraschall</dt><dd>Bauch und Schilddrüse</dd></div>
+      <div><dt>Impfungen</dt><dd>Impfberatung und Impfungen, auch vor Reisen</dd></div>
+      <div><dt>Chronische Erkrankungen</dt><dd>Begleitung bei Diabetes, koronarer Herzkrankheit, Asthma und COPD</dd></div>
+      <div><dt>Labor</dt><dd>Blutentnahme für Laboruntersuchungen</dd></div>
+    </dl>
     <p class="leistungen-hinweis reveal">Beispielhafte Auswahl aus dem bisherigen Praxisangebot. Die endgültige Liste stimmen wir mit Dr. Dyrmishi ab.</p>
   </div>
 </section>
 
-<!-- Anfahrt - ohne Karte (Karte erst nach Klick, Datenschutz) -->
+<!-- Anfahrt - Adresse groß als Farbfläche, Karte erst nach Klick (Datenschutz) -->
 <section class="abschnitt abschnitt-anfahrt" id="anfahrt">
   <div class="wrap anfahrt">
     <div>
-      <p class="eyebrow reveal">Anfahrt</p>
       <h2 class="reveal">So finden Sie uns</h2>
-      <address class="adresse reveal">
-        Praxis Dr. med. Erion Dyrmishi<br>
-        Mittenheimer Str. 52<br>
-        HIT-Gebäude, 1. Stock<br>
-        85764 Oberschleißheim
-      </address>
-      <a href="#anfahrt" class="btn btn-rahmen reveal" data-demo="route">Route planen&nbsp;&rarr;</a>
+      <p class="reveal">Die Praxis liegt im HIT-Gebäude in Oberschleißheim, im 1.&nbsp;Stock.</p>
+      <a href="#anfahrt" class="btn btn-dunkel reveal" data-demo="route">Route planen&nbsp;&rarr;</a>
     </div>
-    <!-- statt Karte: ruhige Form mit Stecknadel, echte Karte erst nach Klick -->
-    <div class="karte-platz reveal" aria-hidden="true">
-      <svg viewBox="0 0 24 24" class="karte-pin"><path d="M12 22s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg>
-      <span>Mittenheimer Str. 52</span>
-    </div>
+    <address class="adress-block reveal">
+      <span class="adress-klein">Praxis Dr. med. Erion Dyrmishi</span>
+      Mittenheimer Str.&nbsp;52<br>
+      HIT-Gebäude, 1.&nbsp;Stock<br>
+      85764 Oberschleißheim
+    </address>
   </div>
 </section>
 
-<!-- Kontakt -->
+<!-- Kontakt - Telefonnummer groß, sie ist das Wichtigste -->
 <section class="abschnitt abschnitt-kontakt" id="kontakt">
   <div class="wrap kontakt">
     <div>
-      <p class="eyebrow reveal">Kontakt</p>
       <h2 class="reveal">Wir sind gern für Sie da</h2>
       <p class="reveal">Für Termine und Fragen rufen Sie uns am besten während der Sprechzeiten an.</p>
+      <a class="kontakt-tel reveal" href="tel:+498937558460">089&nbsp;3755&nbsp;8460</a>
     </div>
     <ul class="kontakt-liste reveal">
-      <li><span>Telefon</span><a href="tel:+498937558460">089&nbsp;3755&nbsp;8460</a></li>
       <li><span>Telefax</span>089&nbsp;3755&nbsp;8461</li>
-      <li><span>E-Mail</span><a href="mailto:praxis@dr-bajorski.de" data-demo="mail">praxis@dr-bajorski.de</a></li>
+      <li><span>E-Mail</span><a href="mailto:praxis@dr-bajorski.de" data-demo="mail">praxis@dr-bajorski.de</a><small class="platzhalter">Adresse von der bisherigen Seite, wird abgestimmt</small></li>
     </ul>
   </div>
 </section>
@@ -230,16 +203,19 @@
       <p class="fuss-name">Praxis Dr. med. Erion Dyrmishi</p>
       <p>Mittenheimer Str. 52 &middot; HIT-Gebäude, 1. Stock &middot; 85764 Oberschleißheim</p>
     </div>
-    <p class="fuss-links"><a href="#top" data-demo="recht">Impressum</a> <a href="#top" data-demo="recht">Datenschutz</a></p>
+    <p class="fuss-links"><a href="#inhalt" data-demo="recht">Impressum</a> <a href="#inhalt" data-demo="recht">Datenschutz</a></p>
   </div>
   <p class="wrap fuss-klein">Entwurf von Alexander Mäding, Webdesign für Praxen &middot; Angaben von dr-bajorski.de, Stand 11.10.2026</p>
 </footer>
 
-<!-- Handy: Leiste unten zum Anrufen -->
+<!-- Handy hoch: Leiste unten. Handy quer: runder Anruf-Knopf -->
 <div class="handy-leiste">
-  <a href="tel:+498937558460" class="btn btn-primaer">Anrufen</a>
+  <a href="tel:+498937558460" class="btn btn-dunkel">Anrufen</a>
   <a href="#sprechzeiten" class="btn btn-rahmen">Sprechzeiten</a>
 </div>
+<a class="anruf-rund" href="tel:+498937558460" aria-label="Praxis anrufen: 089 3755 8460">
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+</a>
 
 <p class="hinweis-toast" id="hinweis" role="status" aria-live="polite"></p>
 

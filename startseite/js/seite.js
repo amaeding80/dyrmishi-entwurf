@@ -18,12 +18,24 @@
   });
 })();
 
-// heutigen Tag in den Sprechzeiten markieren (Sa/So bleibt alles normal)
+// heutigen Tag in den Sprechzeiten markieren + Zeile "Heute" für die Handy-Karte
 (function () {
-  var tag = new Date().getDay();
+  var tag = new Date().getDay(); // 0 = Sonntag
+  var namen = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
   document.querySelectorAll('.js-zeiten tr[data-tag="' + tag + '"]').forEach(function (tr) {
     tr.classList.add('heute');
   });
+  var zeile = document.querySelector('.js-heute');
+  if (!zeile) return;
+  var tr = document.querySelector('.karte-tabelle tr[data-tag="' + tag + '"]');
+  if (tr) {
+    zeile.textContent = 'Heute (' + namen[tag] + '): ' + tr.lastElementChild.textContent;
+  } else {
+    // Wochenende: nächster Termin ist Montag
+    var mo = document.querySelector('.karte-tabelle tr[data-tag="1"] td');
+    zeile.textContent = 'Heute geschlossen. Montag ab ' + mo.textContent.slice(0, 5) + ' Uhr';
+  }
+  zeile.hidden = false;
 })();
 
 // Attrappen - auf der Vorschau passiert nichts Echtes

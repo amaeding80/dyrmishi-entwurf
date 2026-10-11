@@ -28,23 +28,26 @@
   font-display: swap;
 }
 
-/* Praxisgrün von der alten Seite (#6BB985) + dunklere Stufe für Text/Buttons */
+/* Nachtrag: mutiger, ohne Grün und ohne weiche Blobs.
+   Tinte (Nachtblau) als große Fläche, Apricot als einziger warmer Akzent, Papier als Grund.
+   Kontraste: Papier auf Tinte 13:1, Apricot auf Tinte 7,8:1, Terrakotta auf Papier 5,7:1 */
 :root {
-  --gruen: #6bb985;
-  --gruen-dunkel: #2e6b48;
-  --gruen-tief: #1f4c33;
-  --salbei: #e6f1ea;
-  --salbei-2: #d3e6da;
-  --salbei-hell: #f2f7f3;
-  --creme: #fbfaf6;
-  --sand: #f1ece2;
-  --text: #1f2a24;
-  --grau: #56635c;
-  --linie: #dce6df;
+  --tinte: #1d2b4a;
+  --tinte-tief: #121c33;
+  --tinte-2: #2a3a5e;
+  --apricot: #f2b48a;
+  --apricot-hell: #fbe3d1;
+  --terrakotta: #a2471f;
+  --papier: #fbf8f2;
+  --papier-2: #f4eee4;
+  --sand: #e9dfd1;
+  --text: #1c2333;
+  --grau: #5a5f6b;
+  --linie: #e2d9cb;
+  --rot: #a83a2c;
   --serif: "Lora", Georgia, "Times New Roman", serif;
   --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --radius: 22px;
-  --schatten: 0 1px 2px rgba(20,50,35,.05), 0 12px 40px -14px rgba(30,70,50,.18);
+  --radius: 10px; /* bewusst kleine Radien, wirkt weniger nach Baukasten */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -53,38 +56,52 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--sans);
-  font-size: 18px; /* etwas größer, viele Patienten lesen ohne Brille */
-  line-height: 1.65;
+  font-size: 19px; /* wie NHS: 19px am Computer, viele Patienten lesen ohne Brille */
+  line-height: 1.6;
   color: var(--text);
-  background: var(--creme);
+  background: var(--papier);
 }
 
 h1, h2, h3 {
   font-family: var(--serif);
   font-weight: 500;
-  line-height: 1.18;
-  margin: 0 0 .6em;
+  line-height: 1.15;
+  margin: 0 0 .55em;
   overflow-wrap: break-word;
   hyphens: auto;
 }
-h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); letter-spacing: -.01em; }
-h3 { font-size: 1.25rem; }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -.01em; }
+h3 { font-size: 1.2rem; }
 p { margin: 0 0 1em; }
-a { color: var(--gruen-dunkel); }
-a:hover { color: var(--gruen-tief); }
-a:focus-visible, button:focus-visible {
-  outline: 3px solid var(--gruen);
+a { color: var(--tinte); text-underline-offset: 3px; }
+a:hover { color: var(--terrakotta); }
+a:focus-visible, button:focus-visible, main:focus-visible {
+  outline: 3px solid var(--terrakotta);
   outline-offset: 3px;
 }
+main:focus { outline: none; }
 
-.wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
 section[id] { scroll-margin-top: 84px; }
+
+/* Zum Inhalt springen - nur bei Tastatur sichtbar */
+.skip {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--tinte);
+  color: #fff;
+  border-radius: 6px;
+}
+.skip:focus { top: 12px; color: #fff; }
 
 .entwurf-hinweis {
   margin: 0;
   padding: 6px 16px;
-  background: var(--text);
-  color: #dfe8e2;
+  background: var(--tinte-tief);
+  color: #d5dae6;
   font-size: .8rem;
   text-align: center;
 }
@@ -95,25 +112,22 @@ section[id] { scroll-margin-top: 84px; }
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(251,250,246,.92);
-  -webkit-backdrop-filter: saturate(140%) blur(10px);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid rgba(220,230,223,.8);
+  background: var(--papier);
+  border-bottom: 1px solid var(--linie);
 }
 .kopf-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 76px;
+  min-height: 78px;
   gap: 20px;
 }
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--text); }
 .logo-zeichen {
   width: 46px; height: 46px;
-  border-radius: 50%;
-  background: var(--gruen-dunkel); /* weiß auf hellgrün war zu schwach, hellgrün jetzt als Ring */
-  box-shadow: 0 0 0 3px var(--gruen);
-  color: #fff;
+  border-radius: 8px;
+  background: var(--tinte);
+  color: var(--apricot);
   font-family: var(--serif);
   font-size: 1.1rem;
   display: flex;
@@ -122,174 +136,160 @@ section[id] { scroll-margin-top: 84px; }
   flex-shrink: 0;
 }
 .logo-text { line-height: 1.2; }
-.logo-name { display: block; font-family: var(--serif); font-size: 1.2rem; }
-.logo-sub { display: block; font-size: .8rem; color: var(--grau); }
+.logo-name { display: block; font-family: var(--serif); font-size: 1.22rem; }
+.logo-sub { display: block; font-size: .82rem; color: var(--grau); }
+.nur-schmal, .nur-handy { display: none; }
 
-.menue { display: flex; align-items: center; gap: 4px; }
+.menue { display: flex; align-items: center; gap: 2px; }
 .menue a {
   padding: 12px 12px;
   text-decoration: none;
   color: var(--text);
-  font-size: .98rem;
+  font-size: 1rem;
   white-space: nowrap;
 }
-.menue a:hover { color: var(--gruen-dunkel); }
+.menue a:hover { color: var(--terrakotta); text-decoration: underline; }
 .menue .menue-kontakt {
-  margin-left: 6px;
+  margin-left: 8px;
   padding: 10px 20px;
-  border-radius: 30px;
-  background: var(--salbei);
-  color: var(--gruen-tief);
+  border-radius: 6px;
+  background: var(--tinte);
+  color: #fff;
   font-weight: 700;
 }
+.menue .menue-kontakt:hover { background: var(--tinte-tief); color: #fff; text-decoration: none; }
 .burger { display: none; }
 
-/* Hero mit weichen Formen */
+/* Hero - große Tinten-Fläche, keine Deko-Formen */
 .hero-bereich {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(180deg, var(--salbei-hell) 0%, var(--creme) 100%);
-  padding-bottom: clamp(40px, 6vw, 72px);
+  background: var(--tinte);
+  color: var(--papier);
+  border-bottom: 6px solid var(--apricot);
 }
-.hero-bereich::before, .hero-bereich::after {
-  content: "";
-  position: absolute;
-  border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%;
-  pointer-events: none;
-}
-.hero-bereich::before {
-  width: 620px; height: 560px;
-  right: -160px; top: -120px;
-  background: var(--salbei);
-}
-.hero-bereich::after {
-  width: 320px; height: 300px;
-  left: -150px; bottom: -110px;
-  background: var(--sand);
-  opacity: .8;
-}
-.hero-bereich > .wrap { position: relative; z-index: 1; }
-
 .hero {
   display: grid;
-  grid-template-columns: 1.25fr .75fr;
-  gap: 56px;
+  grid-template-columns: 1.35fr .65fr;
+  gap: 64px;
   align-items: center;
-  padding-top: clamp(44px, 7vw, 96px);
-  padding-bottom: clamp(36px, 5vw, 56px);
+  padding-top: clamp(48px, 7vw, 104px);
+  padding-bottom: clamp(48px, 7vw, 96px);
 }
-.hero-ort { font-size: 1rem; color: var(--gruen-dunkel); margin-bottom: 14px; }
-.hero-titel {
-  font-size: clamp(2.1rem, 4.6vw, 3.55rem);
-  line-height: 1.08;
-  letter-spacing: -.015em;
+.hero-chip {
+  display: inline-block;
   margin-bottom: 22px;
-  max-width: 13.5em;
+  padding: 5px 12px;
+  border: 1px solid rgba(242,180,138,.6);
+  border-radius: 4px;
+  color: var(--apricot);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.hero-titel {
+  font-size: clamp(2.3rem, 5.4vw, 4.3rem);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  margin-bottom: 26px;
+  max-width: 12.5em;
   hyphens: manual;
 }
-.hero-titel em { font-style: italic; color: var(--gruen-dunkel); }
-.hero-sub { font-size: 1.12rem; line-height: 1.7; color: var(--grau); max-width: 32em; }
-.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 24px; }
-.hero-trust {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 24px;
-  font-size: .92rem;
-  color: var(--grau);
+/* Akzent ohne Kursiv: kräftige Apricot-Linie unter dem neuen Namen */
+.unterstrich {
+  color: var(--apricot);
+  background-image: linear-gradient(var(--apricot), var(--apricot));
+  background-size: 100% 4px;
+  background-position: 0 96%;
+  background-repeat: no-repeat;
+  padding-bottom: 4px;
 }
-.hero-trust li { position: relative; padding-left: 20px; }
-.hero-trust li::before, .zeiten-tabelle tr.heute th::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: .42em;
-  width: 9px;
-  height: 5px;
-  border-left: 1.5px solid var(--gruen-dunkel);
-  border-bottom: 1.5px solid var(--gruen-dunkel);
-  transform: rotate(-45deg);
-}
+.hero-sub { font-size: 1.15rem; line-height: 1.65; color: #d9deea; max-width: 32em; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 
-/* Karte Sprechzeiten */
+/* Karte Sprechzeiten auf der dunklen Fläche */
 .zeiten-karte {
-  background: #fff;
+  background: var(--papier);
+  color: var(--text);
   border-radius: var(--radius);
-  box-shadow: var(--schatten);
   padding: 28px 28px 22px;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.5);
 }
-.karte-titel { font-size: 1.3rem; margin-bottom: 10px; }
-.zeiten-karte table { width: 100%; border-collapse: collapse; font-size: 1rem; }
-.zeiten-karte th, .zeiten-karte td { padding: 8px 0; border-bottom: 1px solid var(--linie); text-align: left; vertical-align: top; }
-.zeiten-karte th { width: 3em; font-weight: 400; color: var(--grau); }
-.zeiten-karte tr.heute th, .zeiten-karte tr.heute td { color: var(--gruen-dunkel); font-weight: 700; }
-.zeiten-karte tr.heute td::after {
+.karte-titel { font-size: 1.35rem; margin-bottom: 8px; }
+.karte-tabelle { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.karte-tabelle th, .karte-tabelle td { padding: 9px 0; border-bottom: 1px solid var(--linie); text-align: left; vertical-align: top; }
+.karte-tabelle th { width: 3em; font-weight: 400; color: var(--grau); }
+.karte-tabelle tr.heute th, .karte-tabelle tr.heute td { font-weight: 700; color: var(--text); }
+.karte-tabelle tr.heute td::after {
   content: "heute";
   margin-left: 8px;
   padding: 1px 8px;
-  border-radius: 10px;
-  background: var(--salbei);
+  border-radius: 4px;
+  background: var(--apricot);
+  color: var(--tinte);
   font-size: .75rem;
   font-weight: 700;
   vertical-align: 2px;
 }
+.heute-zeile { display: none; }
 .zeiten-tel {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: 14px;
+  padding: 6px 0;
   font-family: var(--serif);
-  font-size: 1.45rem;
-  color: var(--text);
+  font-size: 1.55rem;
+  color: var(--tinte);
   text-decoration: none;
 }
-.zeiten-tel:hover { color: var(--gruen-dunkel); }
-.zeiten-notfall { font-size: .86rem; color: var(--grau); margin: 6px 0 0; }
+.zeiten-tel:hover { color: var(--terrakotta); }
+.alle-zeiten { display: block; padding: 10px 0 2px; font-size: .95rem; font-weight: 700; }
 
-/* Was bleibt */
-.bleibt {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+/* Zwei Wege */
+.wege { background: var(--papier); padding: clamp(56px, 8vw, 96px) 0 0; }
+.wege-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--tinte); }
+.weg { padding: 40px 48px 40px 0; }
+.weg-neu { padding: 40px 0 40px 48px; border-left: 1px solid var(--linie); }
+.weg-titel { font-size: clamp(1.6rem, 2.8vw, 2.1rem); }
+.weg-text { color: var(--grau); }
+.weg-liste { list-style: none; margin: 0 0 8px; padding: 0; }
+.weg-liste li { padding: 14px 0; border-bottom: 1px solid var(--linie); }
+.weg-liste li:last-child { border-bottom: 0; }
+.weg-liste h3 { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; margin: 0 0 2px; }
+.weg-liste p { margin: 0; color: var(--grau); font-size: 1rem; }
+.platzhalter {
+  display: inline-block;
+  margin-top: 2px;
+  padding: 0 8px;
+  border: 1px dashed var(--terrakotta);
+  border-radius: 4px;
+  color: var(--terrakotta) !important;
+  font-size: .82rem !important;
 }
-.bleibt-punkt {
-  background: rgba(255,255,255,.8);
-  border: 1px solid var(--linie);
-  border-radius: 20px;
-  padding: 22px 24px;
-}
-.bleibt-icon { width: 30px; height: 30px; color: var(--gruen-dunkel); display: block; margin-bottom: 10px; }
-.bleibt-punkt b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin-bottom: 2px; }
-.bleibt-punkt span { font-size: .95rem; color: var(--grau); }
+.weg-links { margin: 14px 0 0; display: flex; gap: 24px; }
+.weg-links a { font-weight: 700; padding: 10px 0; }
 
 /* Abschnitte */
-.abschnitt { padding: clamp(64px, 9vw, 104px) 0; }
-.abschnitt-wechsel { background: var(--creme); }
-.abschnitt-zeiten { background: var(--salbei-hell); }
-.abschnitt-leistungen { background: var(--creme); }
-.abschnitt-anfahrt { background: #fff; }
-.abschnitt-kontakt { background: var(--salbei-hell); }
-.eyebrow { font-size: .95rem; color: var(--gruen-dunkel); margin-bottom: 6px; }
-.abschnitt-text { max-width: 640px; color: var(--grau); margin-bottom: 36px; }
+.abschnitt { padding: clamp(64px, 9vw, 108px) 0; }
+.abschnitt-wechsel { background: var(--papier); }
+.abschnitt-zeiten { background: var(--papier-2); }
+.abschnitt-leistungen { background: var(--papier); }
+.abschnitt-anfahrt { background: var(--papier-2); }
+.abschnitt-kontakt { background: var(--papier); }
+.eyebrow { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--terrakotta); margin-bottom: 10px; }
+.abschnitt-text { max-width: 640px; color: var(--grau); margin-bottom: 34px; }
 
 /* Wechsel */
-.wechsel {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 56px;
-  align-items: start;
-}
-.zitat { margin: 18px 0 0; padding: 0 0 0 26px; border-left: 3px solid var(--gruen); }
+.wechsel { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: start; }
+.zitat { position: relative; margin: 22px 0 0; padding: 0 0 0 28px; border-left: 4px solid var(--apricot); }
 .zitat blockquote { margin: 0; }
-.zitat p { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.6; }
+.zitat p { font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.6; }
 .zitat figcaption { color: var(--grau); font-size: .95rem; }
 .gruss-platz {
   position: relative;
-  margin-top: 8px;
-  padding: 34px 30px 18px;
-  border: 2px dashed var(--salbei-2);
+  margin-top: 10px;
+  padding: 36px 30px 18px;
+  border: 2px dashed var(--sand);
   border-radius: var(--radius);
-  background: var(--salbei-hell);
+  background: var(--papier-2);
   color: var(--grau);
 }
 .gruss-label {
@@ -297,159 +297,119 @@ section[id] { scroll-margin-top: 84px; }
   top: -13px;
   left: 22px;
   padding: 2px 12px;
-  border-radius: 20px;
-  background: var(--text);
+  border-radius: 4px;
+  background: var(--tinte);
   color: #fff;
   font-size: .75rem;
   letter-spacing: .03em;
 }
-.gruss-titel, .gruss-unterschrift { font-family: var(--serif); color: var(--text); font-size: 1.1rem; }
+.gruss-titel, .gruss-unterschrift { font-family: var(--serif); color: var(--text); font-size: 1.12rem; }
 
 /* Sprechzeiten ausführlich */
-.zeiten {
-  display: grid;
-  grid-template-columns: 1.3fr .7fr;
-  gap: 56px;
-  align-items: end;
-}
-.zeiten-tabelle {
-  width: 100%;
-  max-width: 620px;
-  border-collapse: collapse;
-  font-size: 1.08rem;
-  background: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: var(--schatten);
-}
-.zeiten-tabelle th, .zeiten-tabelle td { padding: 15px 22px; border-bottom: 1px solid var(--linie); text-align: left; }
-.zeiten-tabelle tr:last-child th, .zeiten-tabelle tr:last-child td { border-bottom: 0; }
-.zeiten-tabelle th { position: relative; font-weight: 700; width: 34%; }
-.zeiten-tabelle tr.heute { background: var(--salbei); }
-.zeiten-tabelle tr.heute th { padding-left: 40px; color: var(--gruen-tief); }
-.zeiten-tabelle tr.heute th::before { left: 20px; top: 1.3em; }
-.notfall {
-  background: #fff;
-  border-radius: var(--radius);
-  padding: 28px 28px 20px;
-  border: 1px solid var(--linie);
-}
-.notfall h3 { margin-bottom: 12px; }
-.notfall p { color: var(--grau); margin-bottom: 4px; font-size: .98rem; }
+.zeiten { display: grid; grid-template-columns: 1.35fr .65fr; gap: 56px; align-items: end; }
+.zeiten-tabelle { width: 100%; border-collapse: collapse; font-size: 1.1rem; border-top: 2px solid var(--tinte); }
+.zeiten-tabelle th, .zeiten-tabelle td { padding: 16px 12px 16px 0; border-bottom: 1px solid var(--linie); text-align: left; }
+.zeiten-tabelle th { font-weight: 700; width: 34%; }
+.zeiten-tabelle tr.heute th, .zeiten-tabelle tr.heute td { background: var(--apricot-hell); }
+.zeiten-tabelle tr.heute th { padding-left: 14px; }
+.zeiten-tabelle tr.heute th::after { content: " · heute"; font-weight: 400; color: var(--terrakotta); font-size: .9rem; }
+.notfall { background: var(--tinte); color: var(--papier); border-radius: var(--radius); padding: 28px 28px 20px; }
+.notfall h3 { margin-bottom: 14px; color: #fff; }
+.notfall p { color: #cfd5e2; margin: 0; font-size: .98rem; }
 .notfall-nr {
-  display: block;
-  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px; /* Tippfläche */
+  margin-bottom: 10px;
   font-family: var(--serif);
-  font-size: 2rem;
-  color: var(--gruen-dunkel);
+  font-size: 2.1rem;
+  color: var(--apricot);
   text-decoration: none;
 }
-.notfall-112 { color: #a3352b; } /* Notruf bewusst warm-rot, sonst nirgends */
+.notfall-nr:hover { color: #fff; }
+.notfall-112 { color: #fff; text-decoration: underline; text-decoration-color: #e0675a; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 
-/* Leistungen */
+/* Leistungen - schlichte Liste */
 .leistungen {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 0 40px;
+  margin: 0;
+  border-top: 2px solid var(--tinte);
 }
-.leistung {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: var(--schatten);
-  padding: 28px 26px 14px;
-}
-.leistung-icon {
-  width: 46px; height: 46px;
-  padding: 10px;
-  border-radius: 50%;
-  background: var(--salbei);
-  color: var(--gruen-dunkel);
-  display: block;
-  margin-bottom: 16px;
-}
-.leistung h3 { margin-bottom: 6px; }
-.leistung p { color: var(--grau); font-size: 1rem; }
-.leistungen-hinweis { margin: 22px 0 0; font-size: .88rem; color: var(--grau); font-style: italic; }
+.leistungen > div { padding: 22px 0 20px; border-bottom: 1px solid var(--linie); }
+.leistungen dt { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 4px; }
+.leistungen dd { margin: 0; color: var(--grau); font-size: 1rem; }
+.leistungen-hinweis { margin: 22px 0 0; font-size: .9rem; color: var(--grau); }
 
 /* Anfahrt */
-.anfahrt {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-.adresse { font-style: normal; font-size: 1.15rem; line-height: 1.7; margin-bottom: 26px; }
-.karte-platz {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background:
-    radial-gradient(circle at 30% 35%, var(--salbei-2) 0 18%, transparent 19%),
-    radial-gradient(circle at 75% 70%, var(--sand) 0 24%, transparent 25%),
-    var(--salbei-hell);
-  color: var(--gruen-dunkel);
+.anfahrt { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.adress-block {
+  font-style: normal;
   font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.35;
+  padding: 36px 40px;
+  background: var(--tinte);
+  color: var(--papier);
+  border-radius: var(--radius);
+  border-left: 8px solid var(--apricot);
 }
-.karte-pin { width: 54px; height: 54px; color: var(--gruen-dunkel); }
+.adress-klein { display: block; font-family: var(--sans); font-size: .9rem; color: var(--apricot); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 10px; }
 
 /* Kontakt */
-.kontakt {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
+.kontakt { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: end; }
+.kontakt-tel {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: var(--tinte);
+  text-decoration: none;
+  border-bottom: 4px solid var(--apricot);
+  line-height: 1.2;
 }
-.kontakt-liste { list-style: none; margin: 0; padding: 0; }
-.kontakt-liste li {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 4px;
-  border-bottom: 1px solid var(--linie);
-  font-size: 1.12rem;
-}
-.kontakt-liste span { color: var(--grau); font-size: .98rem; }
-.kontakt-liste a { text-decoration: none; font-weight: 700; overflow-wrap: anywhere; }
+.kontakt-tel:hover { color: var(--terrakotta); }
+.kontakt-liste { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--tinte); }
+.kontakt-liste li { display: flex; flex-direction: column; padding: 16px 0; border-bottom: 1px solid var(--linie); font-size: 1.1rem; }
+.kontakt-liste span { color: var(--grau); font-size: .95rem; }
+.kontakt-liste a { font-weight: 700; overflow-wrap: anywhere; }
+.kontakt-liste .platzhalter { align-self: flex-start; margin-top: 6px; }
 
 /* Fuß */
-.fuss { background: #1f2f26; color: #cfdcd4; padding: 44px 0 34px; font-size: .95rem; }
+.fuss { background: var(--tinte-tief); color: #cdd3e0; padding: 44px 0 34px; font-size: .95rem; }
 .fuss-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .fuss p { margin: 0 0 .4em; }
 .fuss-name { font-family: var(--serif); font-size: 1.15rem; color: #fff; }
-.fuss-links a { color: #cfdcd4; margin-left: 18px; padding: 10px 0; display: inline-block; }
-.fuss .fuss-klein { margin: 20px auto 0; font-size: .8rem; opacity: .7; }
+.fuss-links a { color: #cdd3e0; margin-left: 18px; padding: 10px 0; display: inline-block; }
+.fuss .fuss-klein { margin: 20px auto 0; font-size: .8rem; opacity: .75; }
 
-/* Buttons */
+/* Buttons - eckiger, kräftiger */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  min-height: 50px;
-  padding: 12px 26px;
-  border-radius: 40px;
+  gap: 10px;
+  min-height: 54px;
+  padding: 13px 26px;
+  border-radius: 6px;
   font-family: var(--sans);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   font-weight: 700;
   text-decoration: none;
   border: 2px solid transparent;
-  transition: background .2s, color .2s, transform .2s;
+  transition: background .2s, color .2s;
   cursor: pointer;
 }
-.btn:hover { transform: translateY(-1px); }
-.btn-primaer { background: var(--gruen-dunkel); color: #fff; box-shadow: 0 10px 24px -10px rgba(46,107,72,.6); }
-.btn-primaer:hover { background: var(--gruen-tief); color: #fff; }
-.btn-rahmen { border-color: var(--gruen-dunkel); color: var(--gruen-dunkel); background: transparent; }
-.btn-rahmen:hover { background: var(--salbei); }
+.btn-hell { background: var(--apricot); color: var(--tinte); }
+.btn-hell:hover { background: #f7c9a8; color: var(--tinte); }
+.btn-rahmen-hell { border-color: rgba(251,248,242,.7); color: var(--papier); }
+.btn-rahmen-hell:hover { background: rgba(255,255,255,.08); color: #fff; }
+.btn-dunkel { background: var(--tinte); color: #fff; }
+.btn-dunkel:hover { background: var(--tinte-tief); color: #fff; }
+.btn-rahmen { border-color: var(--tinte); color: var(--tinte); background: var(--papier); }
 .icon { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
-.handy-leiste { display: none; }
+.handy-leiste, .anruf-rund { display: none; }
 
 /* Hinweis bei Klick auf Attrappen */
 .hinweis-toast {
@@ -461,8 +421,8 @@ section[id] { scroll-margin-top: 84px; }
   max-width: calc(100% - 32px);
   margin: 0;
   padding: 12px 18px;
-  border-radius: 12px;
-  background: var(--text);
+  border-radius: 8px;
+  background: var(--tinte-tief);
   color: #fff;
   font-size: .92rem;
   text-align: center;
@@ -474,21 +434,22 @@ section[id] { scroll-margin-top: 84px; }
 }
 .hinweis-toast.an { opacity: 1; transform: translate(-50%, 0); }
 
-/* Einblenden beim Scrollen - nur mit JS */
-.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+/* Einblenden beim Scrollen - nur mit JS, dezent */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
 .js .reveal.sichtbar { opacity: 1; transform: none; }
-.js .leistungen .reveal:nth-child(3n+2) { transition-delay: .08s; }
-.js .leistungen .reveal:nth-child(3n) { transition-delay: .16s; }
 
 
 /* ================= Responsive ================= */
 
+/* 1024: Fachrichtung gekürzt statt ausgeblendet */
 @media (max-width: 1100px) {
   .menue a { padding: 12px 8px; }
-  .logo-sub { display: none; }
+  .nur-breit { display: none; }
+  .nur-schmal { display: inline; }
+  .hero { gap: 40px; }
 }
 
-/* Tablet: Menü wird zum Burger */
+/* Tablet: Menü wird zum Burger, Hero bleibt zweispaltig bis 760 */
 @media (max-width: 960px) {
   .burger {
     display: flex;
@@ -496,10 +457,10 @@ section[id] { scroll-margin-top: 84px; }
     justify-content: center;
     gap: 6px;
     width: 48px; height: 48px;
-    padding: 0 11px;
-    border: 0;
-    border-radius: 50%;
-    background: var(--salbei);
+    padding: 0 12px;
+    border: 1px solid var(--linie);
+    border-radius: 6px;
+    background: var(--papier);
     cursor: pointer;
   }
   .burger span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: transform .25s, opacity .25s; }
@@ -513,19 +474,24 @@ section[id] { scroll-margin-top: 84px; }
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 8px 20px 20px;
-    background: var(--creme);
+    padding: 8px 24px 22px;
+    background: var(--papier);
     border-bottom: 1px solid var(--linie);
     box-shadow: 0 20px 30px -20px rgba(0,0,0,.2);
   }
   .menue.offen { display: flex; }
-  .menue a { padding: 14px 8px; border-bottom: 1px solid var(--linie); font-size: 1.05rem; }
+  .menue a { padding: 14px 4px; border-bottom: 1px solid var(--linie); font-size: 1.08rem; }
   .menue .menue-kontakt { margin: 14px 0 0; text-align: center; border: 0; }
-  .hero { grid-template-columns: 1fr; gap: 36px; }
-  .zeiten-karte { max-width: 460px; }
+  .hero { grid-template-columns: 1.15fr .85fr; gap: 32px; }
+  .hero-titel { font-size: clamp(2.2rem, 5.6vw, 3.2rem); }
+  .wechsel { grid-template-columns: 1fr; gap: 40px; }
   .leistungen { grid-template-columns: repeat(2, 1fr); }
-  .wechsel, .zeiten, .anfahrt, .kontakt { grid-template-columns: 1fr; gap: 36px; }
-  .notfall { max-width: 460px; }
+  .zeiten { grid-template-columns: 1.2fr .8fr; gap: 32px; }
+  .anfahrt, .kontakt { gap: 32px; }
+}
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* Handy hoch */
@@ -535,32 +501,57 @@ section[id] { scroll-margin-top: 84px; }
   .kopf-inner { min-height: 66px; }
   .logo-zeichen { width: 40px; height: 40px; font-size: 1rem; }
   .logo-name { font-size: 1.02rem; }
-  .hero { padding-top: 34px; }
-  .hero-bereich::before { width: 360px; height: 330px; right: -170px; top: -60px; }
+  .logo-sub { font-size: .76rem; }
+  .hero { padding-top: 30px; padding-bottom: 32px; }
+  .hero-chip { margin-bottom: 14px; font-size: .8rem; }
+  .hero-titel { font-size: 2.15rem; margin-bottom: 16px; }
+  .hero-sub { font-size: 1.02rem; }
+  .hero-btns { margin-top: 20px; }
   .hero-btns .btn { flex: 1 1 auto; }
+  /* Telefon steht in der Karte, im Hero nur einmal */
+  .hero-anruf { display: none; }
   .btn { white-space: nowrap; padding: 12px 20px; }
-  .zeiten-karte { padding: 22px 20px 18px; }
-  .bleibt { grid-template-columns: 1fr; gap: 12px; }
-  .bleibt-punkt { display: grid; grid-template-columns: 34px 1fr; column-gap: 14px; padding: 16px 18px; }
-  .bleibt-icon { grid-row: span 2; margin: 2px 0 0; }
-  .leistungen { grid-template-columns: 1fr; gap: 14px; }
-  .leistung { display: grid; grid-template-columns: 46px 1fr; column-gap: 16px; padding: 20px 20px 8px; }
-  .leistung-icon { grid-row: span 2; margin: 0; }
+  /* Karte: nur "Heute" + Telefon */
+  .zeiten-karte { padding: 20px 20px 16px; }
+  .karte-titel { font-size: 1.1rem; margin-bottom: 4px; }
+  .js .karte-tabelle { display: none; }
+  .js .heute-zeile { display: block; margin: 0; font-size: 1.05rem; font-weight: 700; }
+  .nur-handy { display: inline; }
+  .zeiten-tel {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 6px;
+    background: var(--tinte);
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1.08rem;
+  }
+  .zeiten-tel:hover { color: #fff; }
+  .wege-inner { grid-template-columns: 1fr; }
+  .weg, .weg-neu { padding: 28px 0; border-left: 0; }
+  .weg-neu { border-top: 1px solid var(--linie); }
+  .zeiten, .anfahrt, .kontakt { grid-template-columns: 1fr; gap: 28px; }
   .zeiten-tabelle { font-size: 1rem; }
-  .zeiten-tabelle th, .zeiten-tabelle td { padding: 12px 14px; display: block; border: 0; }
-  .zeiten-tabelle tr { display: block; border-bottom: 1px solid var(--linie); padding: 4px 0; }
-  .zeiten-tabelle td { padding-top: 0; padding-bottom: 0; }
-  .zeiten-tabelle td:last-child { padding-bottom: 10px; }
+  .zeiten-tabelle th, .zeiten-tabelle td { display: block; padding: 0 12px; border: 0; }
+  .zeiten-tabelle tr { display: block; border-bottom: 1px solid var(--linie); padding: 10px 0; }
   .zeiten-tabelle td:empty { display: none; }
   .zeiten-tabelle th { width: auto; padding-bottom: 2px; }
-  .zeiten-tabelle tr.heute th { padding-left: 34px; }
-  .zeiten-tabelle tr.heute th::before { left: 14px; top: 1.05em; }
+  .zeiten-tabelle tr.heute { background: var(--apricot-hell); }
+  .zeiten-tabelle tr.heute th, .zeiten-tabelle tr.heute td { background: none; }
+  .zeiten-tabelle tr.heute th { padding-left: 12px; }
+  /* Leistungen: schlichte Liste, eine Spalte */
+  .leistungen { grid-template-columns: 1fr; }
+  .leistungen > div { padding: 14px 0; }
+  .leistungen dt { font-size: 1.12rem; }
   .gruss-platz { padding: 30px 20px 12px; }
   .zitat { padding-left: 18px; }
   .zitat p { font-size: 1.1rem; }
-  .kontakt-liste li { flex-direction: column; gap: 0; }
+  .adress-block { padding: 26px 24px; }
   .fuss-links a { margin: 0 18px 0 0; }
-  /* Leiste unten: Anrufen ist auf dem Handy das Wichtigste */
   .handy-leiste {
     display: flex;
     gap: 10px;
@@ -568,13 +559,11 @@ section[id] { scroll-margin-top: 84px; }
     left: 0; right: 0; bottom: 0;
     z-index: 25;
     padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-    background: rgba(251,250,246,.95);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    background: var(--papier);
     border-top: 1px solid var(--linie);
+    transition: transform .3s;
   }
-  .handy-leiste .btn { flex: 1; min-height: 46px; box-shadow: none; }
-  .handy-leiste { transition: transform .3s; }
+  .handy-leiste .btn { flex: 1; min-height: 48px; }
   .handy-leiste.weg { transform: translateY(110%); }
   .fuss { padding-bottom: 100px; }
   .hinweis-toast { bottom: 84px; }
@@ -584,18 +573,36 @@ section[id] { scroll-margin-top: 84px; }
 @media (max-width: 360px) {
   .wrap { padding: 0 16px; }
   .logo-name { font-size: .94rem; }
-  .logo-zeichen { width: 36px; height: 36px; font-size: .92rem; }
+  .logo-sub { display: none; }
+  .hero-titel { font-size: 1.9rem; }
   .btn { font-size: .95rem; padding: 12px 16px; }
 }
 
-/* Handy quer: Kopf nicht festkleben, Leiste weg */
+/* Handy quer: Kopf nicht festkleben, Leiste weg, dafür runder Anruf-Knopf */
 @media (max-height: 500px) and (orientation: landscape) {
   .kopf { position: static; }
   .handy-leiste { display: none; }
+  .anruf-rund {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 25;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--tinte);
+    color: var(--apricot);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  }
+  .anruf-rund .icon { width: 24px; height: 24px; }
+  .hero { padding-top: 24px; padding-bottom: 28px; }
+  .hero-titel { font-size: 2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .btn { transition: none; }
+  .btn, .handy-leiste { transition: none; }
 }
