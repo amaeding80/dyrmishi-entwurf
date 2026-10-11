@@ -6,13 +6,15 @@
 <title>Website-Analyse für die Praxis Dr. Dyrmishi</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Persönliche Website-Analyse und Entwurf für Herrn Dr. med. Erion Dyrmishi">
-<meta name="theme-color" content="#2e6b48">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%236bb985'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23fff' font-family='Georgia'%3EED%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#1d2b4a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d2b4a'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23f2b48a' font-family='Georgia'%3EED%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="fonts/lora-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+
+<a class="skip" href="#start">Zum Inhalt springen</a>
 
 <!-- Kopfzeile -->
 <header class="topbar">
@@ -49,8 +51,8 @@
     <ul class="gut-liste">
       <li class="reveal"><strong>Ein herzlicher Übergang.</strong> Der Brief von Frau Dr. Bajorski-Brandt an ihre Patienten ist persönlich und bittet ausdrücklich um Vertrauen für Sie. Eine bessere Brücke gibt es kaum.</li>
       <li class="reveal"><strong>Aktuelle Sprechzeiten.</strong> Die Zeiten stehen schon unter Ihrem Namen, direkt auf der Startseite, dazu die Notdienstnummern 116&nbsp;117 und 112.</li>
-      <li class="reveal"><strong>Ein vertrautes Grün.</strong> Das helle Praxisgrün kennen die Patienten seit Jahren. Daran lässt sich gut anknüpfen, damit sich niemand fremd fühlt.</li>
-      <li class="reveal"><strong>Schnell geladen.</strong> Die Seite ist sehr klein und lädt fix. Das soll bei einer neuen Seite auch so bleiben.</li>
+      <li class="reveal"><strong>Kontakt auf einen Blick.</strong> Adresse mit Stockwerk, Telefon und Fax stehen direkt auf der Startseite. Genau das suchen die meisten Patienten.</li>
+      <li class="reveal"><strong>Schnell geladen.</strong> Die Seite ist sehr klein und lädt fix. Das soll bei einer neuen Seite so bleiben.</li>
     </ul>
 
     <!-- so sieht es heute aus, Foto von Frau Dr. B bewusst abgeschnitten -->
@@ -79,12 +81,12 @@
   <div class="wrap">
     <p class="eyebrow reveal">Beispiel</p>
     <h2 class="reveal">So könnte Ihr Einstieg aussehen</h2>
-    <p class="abschnitt-text reveal">Ein erster Entwurf im vertrauten Praxisgrün, nur etwas ruhiger und besser lesbar. Stammpatienten sehen auf einen Blick: gleiche Praxis, gleiche Räume, gleiches Team. Neue Patienten sehen sofort, wer Sie sind und wie sie Sie erreichen. Alle Angaben stammen von der jetzigen Seite, Fotos lassen wir bewusst erst einmal weg.</p>
+    <p class="abschnitt-text reveal">Ein erster Entwurf: kräftiges Nachtblau mit einem warmen Apricot, große, gut lesbare Schrift. Ihr Name steht im wichtigsten Satz, und Stammpatienten sehen gleich darunter, was bleibt: Adresse, Nummern, Team. Neue Patienten finden sofort ihren eigenen Einstieg. Alle Angaben stammen von der jetzigen Seite, Fotos lassen wir bewusst erst einmal weg.</p>
 
     <div class="browser reveal">
       <div class="browser-leiste" aria-hidden="true">
         <span></span><span></span><span></span>
-        <div class="browser-url">hausarzt-oberschleissheim.de</div>
+        <div class="browser-url">ihre-praxis.de</div>
       </div>
 
       <div class="demo">
@@ -106,21 +108,16 @@
           <button class="demo-burger" type="button" aria-label="Menü (Vorschau)" data-demo="menu"><span></span><span></span><span></span></button>
         </div>
 
-        <!-- Hero - links Text, rechts Sprechzeiten statt Foto -->
+        <!-- Hero - wie startseite/index.html, Änderungen dort mitziehen -->
         <div class="hero">
           <div class="hero-text">
-            <p class="hero-ort">Hausarztpraxis im HIT-Gebäude, Oberschleißheim</p>
-            <h3 class="hero-titel">Ihre Hausarztpraxis in Oberschleißheim &ndash; <em>vertraut wie bisher.</em></h3>
-            <p class="hero-sub">Seit 1. Oktober 2026 führt Dr. med. Erion Dyrmishi, hausärztlich tätiger Internist, die Praxis von Frau Dr. Bajorski-Brandt weiter. In denselben Räumen und mit dem bewährten Praxisteam.</p>
+            <p class="hero-chip">Seit 1. Oktober 2026</p>
+            <h3 class="hero-titel">Ihre Hausarztpraxis in Oberschleißheim &ndash; <span class="unterstrich">jetzt mit Dr.&nbsp;Dyrmishi.</span></h3>
+            <p class="hero-sub">Dr. med. Erion Dyrmishi, hausärztlich tätiger Internist, führt die Praxis von Frau Dr. Bajorski-Brandt weiter. An der gewohnten Adresse und mit dem bewährten Praxisteam.</p>
             <div class="hero-btns">
-              <a href="#beispiel" class="btn btn-primaer" data-demo="tel">089&nbsp;3755&nbsp;8460 anrufen</a>
-              <a href="#beispiel" class="btn btn-rahmen" data-demo="zeiten">Sprechzeiten</a>
+              <a href="#beispiel" class="btn btn-hell" data-demo="tel">089&nbsp;3755&nbsp;8460 anrufen</a>
+              <a href="#beispiel" class="btn btn-rahmen-hell" data-demo="neu">Neu in der Praxis?</a>
             </div>
-            <ul class="hero-trust">
-              <li>Hausärztlich tätiger Internist</li>
-              <li>Bewährtes Praxisteam</li>
-              <li>Mittenheimer Str. 52, 1. Stock</li>
-            </ul>
           </div>
 
           <!-- Sprechzeiten wie auf der jetzigen Seite, heute wird per JS markiert -->
@@ -134,15 +131,16 @@
               <tr data-tag="5"><td>Fr.</td><td>08:00&ndash;12:00</td></tr>
             </table>
             <a class="zeiten-tel" href="#beispiel" data-demo="tel">089&nbsp;3755&nbsp;8460</a>
-            <p class="zeiten-notfall">Außerhalb der Sprechzeiten: Ärztlicher Bereitschaftsdienst 116&nbsp;117, im Notfall 112.</p>
+            <a class="alle-zeiten" href="#beispiel" data-demo="zeiten">Alle Sprechzeiten und Notdienst &rarr;</a>
           </div>
         </div>
 
         <!-- was gleich bleibt - nur Fakten von der Seite -->
         <div class="demo-bleibt">
-          <div><b>Gleiche Räume</b><span>Mittenheimer Str. 52, HIT-Gebäude, 1.&nbsp;Stock</span></div>
-          <div><b>Gleiche Nummer</b><span>Telefon 089&nbsp;3755&nbsp;8460, Fax 089&nbsp;3755&nbsp;8461</span></div>
-          <div><b>Vertraute Gesichter</b><span>Das bewährte Praxisteam ist weiter für Sie da.</span></div>
+          <h4 class="demo-bleibt-titel">Sie kennen uns schon?</h4>
+          <div><h5>Gleiche Adresse</h5><p>Mittenheimer Str. 52, HIT-Gebäude, 1.&nbsp;Stock</p></div>
+          <div><h5>Gleiche Nummern</h5><p>Telefon und Fax bleiben, wie sie sind.</p></div>
+          <div><h5>Vertraute Gesichter</h5><p>Das bewährte Praxisteam ist weiter für Sie da.</p></div>
         </div>
       </div>
     </div>
@@ -163,9 +161,9 @@
         <span class="punkt-nr">1</span>
         <div>
           <h3>Die Übernahme sieht man noch kaum</h3>
-          <p>Logo, Seitentitel, die Beschreibung bei Google, die Fußzeile, Impressum und Datenschutz nennen noch Frau Dr. Bajorski-Brandt als &bdquo;Praktische Ärztin&ldquo;. Ihr Name steht nur im Brief und über den Sprechzeiten. Wer nach &bdquo;Dyrmishi&ldquo; oder &bdquo;Hausarzt Oberschleißheim&ldquo; sucht, landet so kaum bei Ihnen.</p>
+          <p>Logo und Seitentitel lauten noch &bdquo;Praxis für Allgemeinmedizin, Dr. med. Alexandra Bajorski-Brandt&ldquo;, in der Beschreibung für Google und im Impressum steht sie als &bdquo;Praktische Ärztin&ldquo;, ebenso in der Fußzeile und im Datenschutz. Ihr Name taucht nur im Brief, über den Sprechzeiten und im Adresskasten auf. Wer nach &bdquo;Dyrmishi&ldquo; oder &bdquo;Hausarzt Oberschleißheim&ldquo; sucht, landet so kaum bei Ihnen.</p>
           <p>Außerdem steht über der Adresse &bdquo;NEU:&ldquo;, obwohl die Praxis in denselben Räumen bleibt. Manche Patienten könnten das als Umzug verstehen.</p>
-          <p class="vorschlag"><b>Vorschlag:</b> Die Seite auf Ihren Namen umstellen und schon im ersten Satz klar sagen, dass alles Vertraute bleibt. Den Brief von Frau Dr. Bajorski-Brandt würde ich als kleinen Abschnitt &bdquo;Ein Wort zum Wechsel&ldquo; behalten. Ein Beispiel haben Sie <a href="#beispiel">oben</a> gesehen.</p>
+          <p class="vorschlag"><b>Vorschlag:</b> Die Seite auf Ihren Namen umstellen: Ihr Name gehört in den ersten Satz, direkt darunter das, was bleibt. Den Brief von Frau Dr. Bajorski-Brandt würde ich als kleinen Abschnitt &bdquo;Ein Wort zum Wechsel&ldquo; behalten. Ein Beispiel haben Sie <a href="#beispiel">oben</a> gesehen.</p>
         </div>
       </article>
       <article class="punkt reveal">
@@ -173,8 +171,8 @@
         <div>
           <h3>Auf dem Handy kaum lesbar</h3>
           <p>Die Seite ist fest 750 Pixel breit und hat keine Handy-Ansicht. Das Smartphone verkleinert deshalb die ganze Seite, und der ohnehin kleine Text (12&ndash;13 Pixel) wird winzig. Man muss mit zwei Fingern vergrößern. Die Telefonnummer lässt sich auch nicht antippen. Gerade ältere Patienten tun sich damit schwer.</p>
-          <ul class="werte" aria-label="Messwerte Google Lighthouse, Handy">
-            <li><b>77 / 100</b>Barrierefreiheit</li>
+          <ul class="werte" aria-label="Messwerte, Google-Test auf dem Handy">
+            <li><b>77 / 100<sup>*</sup></b>Barrierefreiheit</li>
             <li><b>nicht bestanden</b>Handy-Ansicht</li>
             <li><b>nicht bestanden</b>Schriftgröße</li>
           </ul>
@@ -196,12 +194,12 @@
     <div class="weitere reveal">
       <details>
         <summary>Ladezeit</summary>
-        <p>Hier gibt es wenig zu tun: Google Lighthouse misst auf dem Handy <b>99 von 100</b> Punkten, die Startseite ist nur rund 170&nbsp;KB groß. Eine neue Seite sollte das halten, mit wenigen, gut komprimierten Dateien.</p>
+        <p>Hier gibt es wenig zu tun: Die Startseite ist nur rund 170&nbsp;KB groß und lädt schnell.<sup>*</sup> Eine neue Seite sollte das halten, mit wenigen, gut komprimierten Dateien.</p>
       </details>
       <details>
         <summary>Sicherheit (kein HTTPS)</summary>
         <p>Die Seite läuft nur über eine unverschlüsselte Verbindung. Chrome und Safari zeigen deshalb neben der Adresse &bdquo;Nicht sicher&ldquo; an. Das wirkt bei einer Arztpraxis ungünstig, und ein Formular (z.&nbsp;B. für Rezeptbestellungen) wäre so nicht möglich.</p>
-        <p class="vorschlag"><b>Vorschlag:</b> Ein SSL-Zertifikat einrichten. Das ist bei den meisten Anbietern heute kostenlos.</p>
+        <p class="vorschlag"><b>Vorschlag:</b> Die Verschlüsselung einrichten (das Schloss neben der Adresse). Das ist bei den meisten Anbietern heute kostenlos.</p>
       </details>
       <details>
         <summary>Impressum und Datenschutz</summary>
@@ -212,7 +210,7 @@
       <details>
         <summary>Gefunden werden bei Google und in KI-Suchen</summary>
         <p>Google, aber auch ChatGPT und Co. lesen vor allem klare Angaben aus: Name, Fachrichtung, Adresse, Sprechzeiten. Auf der jetzigen Seite stehen diese Angaben noch für die bisherige Praxis, und es fehlt der unsichtbare Teil, der sie für Suchmaschinen eindeutig macht.</p>
-        <p class="vorschlag"><b>Vorschlag:</b> Ihr Name und &bdquo;Hausarzt in Oberschleißheim&ldquo; in Titel und Text, strukturierte Praxisdaten im Hintergrund und ein aktuelles Google-Unternehmensprofil mit denselben Angaben.</p>
+        <p class="vorschlag"><b>Vorschlag:</b> Ihr Name und &bdquo;Hausarzt in Oberschleißheim&ldquo; in Titel und Text, ein unsichtbarer Steckbrief für Google und ein aktuelles Google-Unternehmensprofil mit denselben Angaben.</p>
       </details>
       <details>
         <summary>Barrierefreiheit</summary>
@@ -252,11 +250,11 @@
       </div>
       <div class="kachel reveal">
         <h3>Selbst pflegen</h3>
-        <p>Urlaub, Vertretung oder geänderte Zeiten tragen Sie oder Ihr Team in zwei Minuten selbst ein.</p>
+        <p>Urlaub, Vertretung oder geänderte Zeiten tragen Sie oder Ihr Team in wenigen Minuten selbst ein.</p>
       </div>
       <div class="kachel reveal">
-        <h3>Umzug ohne Stress</h3>
-        <p>Ich kümmere mich um Technik und Adresse. Die alte Adresse leitet auf die neue Seite weiter, damit niemand ins Leere läuft.</p>
+        <h3>Wechsel ohne Stress</h3>
+        <p>Ich kümmere mich um die Technik. In Absprache mit Frau Dr. Bajorski-Brandt leitet die alte Adresse auf die neue Seite weiter, damit niemand ins Leere läuft.</p>
       </div>
     </div>
 
@@ -319,7 +317,7 @@
 <footer class="footer">
   <div class="wrap">
     <p>Persönliche Analyse für Herrn Dr. med. Erion Dyrmishi &middot; nicht öffentlich gelistet &middot; Stand 11.10.2026</p>
-    <p class="footer-klein">Alle Messwerte beziehen sich auf dr-bajorski.de am 11.10.2026 (Google Lighthouse, Handy). Angaben im Beispiel stammen von dr-bajorski.de und dienen nur der Vorschau.</p>
+    <p class="footer-klein">* Messwerte: Google Lighthouse (Handy) am 11.10.2026, gemessen an einer Kopie der Startseite von dr-bajorski.de. Angaben im Beispiel stammen von dr-bajorski.de und dienen nur der Vorschau.</p>
   </div>
 </footer>
 

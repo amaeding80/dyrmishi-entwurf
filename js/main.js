@@ -35,7 +35,8 @@ var MAIL_BETREFF = 'Website-Analyse Praxis Dr. Dyrmishi';
   var hinweis = document.getElementById('demo-hinweis');
   var texte = {
     tel: 'Nur Vorschau: Auf dem Handy würde hier direkt die Praxis angerufen.',
-    zeiten: 'Nur Vorschau: Hier käme man zu den Sprechzeiten.',
+    zeiten: 'Nur Vorschau: Hier käme man zu allen Sprechzeiten und zum Notdienst.',
+    neu: 'Nur Vorschau: Hier käme man zu den Infos für neue Patienten.',
     menu: 'Nur Vorschau: Hier würde sich das Menü öffnen.'
   };
   var timer;

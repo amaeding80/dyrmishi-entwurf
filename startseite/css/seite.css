@@ -245,7 +245,8 @@ section[id] { scroll-margin-top: 84px; }
 
 /* Zwei Wege */
 .wege { background: var(--papier); padding: clamp(56px, 8vw, 96px) 0 0; }
-.wege-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--tinte); }
+.wege-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.weg { border-top: 2px solid var(--tinte); }
 .weg { padding: 40px 48px 40px 0; }
 .weg-neu { padding: 40px 0 40px 48px; border-left: 1px solid var(--linie); }
 .weg-titel { font-size: clamp(1.6rem, 2.8vw, 2.1rem); }
