@@ -1,0 +1,831 @@
+/* Entwurf Dyrmishi - Analyse-Seite */
+
+/* Schriften lokal (OFL) - kein Google Fonts
+   Lora für Überschriften, Atkinson Hyperlegible für Text (gut lesbar, auch für ältere Augen) */
+@font-face {
+  font-family: "Lora";
+  src: url("../fonts/lora-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lora";
+  src: url("../fonts/lora-latin-500-italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lora";
+  src: url("../fonts/lora-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson";
+  src: url("../fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson";
+  src: url("../fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Farben: das Grün der jetzigen Seite (#6BB985) bleibt als Wiedererkennung,
+   für Text und Buttons eine dunklere Stufe, damit es gut lesbar ist (6,3:1 auf Weiß) */
+:root {
+  --gruen: #6bb985;
+  --gruen-dunkel: #2e6b48;
+  --gruen-tief: #1f4c33;
+  --salbei: #e6f1ea;
+  --salbei-2: #d3e6da;
+  --salbei-hell: #f2f7f3;
+  --creme: #fbfaf6;
+  --sand: #f1ece2;
+  --text: #1f2a24;
+  --grau: #56635c;
+  --linie: #dce6df;
+  --serif: "Lora", Georgia, "Times New Roman", serif;
+  --sans: "Atkinson", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius: 22px;
+  --schatten: 0 1px 2px rgba(20,50,35,.05), 0 12px 40px -14px rgba(30,70,50,.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--creme);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.18;
+  margin: 0 0 .6em;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+h1 { font-size: clamp(2.05rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -.01em; }
+h2 { font-size: clamp(1.7rem, 3.3vw, 2.45rem); letter-spacing: -.01em; }
+h3 { font-size: 1.28rem; }
+h1 em { font-style: italic; color: var(--gruen-dunkel); }
+
+p { margin: 0 0 1em; }
+
+a { color: var(--gruen-dunkel); }
+a:hover { color: var(--gruen-tief); }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--gruen);
+  outline-offset: 3px;
+}
+
+.nw { white-space: nowrap; }
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.wrap.schmal { max-width: 720px; }
+
+section[id] { scroll-margin-top: 64px; }
+
+/* Kopfzeile */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(251,250,246,.88);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(220,230,223,.7);
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.topbar-titel {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  white-space: nowrap;
+}
+.topnav { display: flex; }
+.topnav a {
+  display: block;
+  padding: 14px 8px; /* Tippfläche 44px */
+  margin-left: 8px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: .95rem;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.topnav a:hover { color: var(--gruen-dunkel); }
+
+/* Intro mit weichen Formen im Hintergrund */
+.intro {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 11vw, 120px) 0 clamp(56px, 8vw, 90px);
+  background: var(--salbei-hell);
+}
+.intro::before, .intro::after {
+  content: "";
+  position: absolute;
+  border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%;
+  pointer-events: none;
+}
+.intro::before {
+  width: 520px; height: 480px;
+  right: -170px; top: -150px;
+  background: var(--salbei);
+}
+.intro::after {
+  width: 300px; height: 280px;
+  left: -130px; bottom: -160px;
+  background: var(--sand);
+}
+.intro .wrap { position: relative; z-index: 1; }
+.kicker { font-size: .92rem; color: var(--gruen-dunkel); }
+.lead { font-size: clamp(1.1rem, 2vw, 1.28rem); line-height: 1.55; }
+.weiter {
+  display: inline-block;
+  padding: 12px 0;
+  text-decoration: none;
+  font-weight: 700;
+}
+.weiter span { display: inline-block; transition: transform .3s; }
+.weiter:hover span { transform: translateY(3px); }
+
+/* Abschnitte */
+.abschnitt { padding: clamp(64px, 10vw, 110px) 0; }
+.abschnitt-hell { background: var(--creme); }
+.abschnitt-beispiel { background: #fff; }
+#analyse { background: var(--salbei-hell); }
+.abschnitt-angebot { background: var(--creme); }
+
+.eyebrow {
+  font-size: .95rem;
+  color: var(--grau);
+  margin-bottom: 6px;
+}
+.abschnitt-text {
+  max-width: 660px;
+  color: var(--grau);
+  margin-bottom: 36px;
+}
+
+/* Was gut ist */
+.gut-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 40px;
+}
+.gut-liste li { position: relative; padding-left: 30px; }
+.gut-liste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .45em;
+  width: 14px;
+  height: 8px;
+  border-left: 2px solid var(--gruen-dunkel);
+  border-bottom: 2px solid var(--gruen-dunkel);
+  transform: rotate(-45deg);
+}
+
+/* Vorher - kleiner Ausschnitt der jetzigen Seite */
+.vorher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 48px;
+}
+.vorher figure { margin: 0; }
+.vorher img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--linie);
+  box-shadow: var(--schatten);
+}
+.vorher figcaption { font-size: .88rem; color: var(--grau); margin-top: 10px; }
+.vorher-handy img { max-width: 260px; margin: 0 auto; }
+.vorher-handy figcaption { text-align: center; }
+
+/* Analyse Punkte */
+.punkte { display: flex; flex-direction: column; gap: 22px; }
+.punkt {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+  padding: 32px 34px 18px 28px;
+}
+.punkt h3 { margin-top: 6px; }
+.punkt-nr {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--salbei);
+  color: var(--gruen-dunkel);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vorschlag {
+  background: var(--salbei-hell);
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.hinweis { font-size: .85rem; color: var(--grau); font-style: italic; }
+
+/* Messwerte als kleine Zahlenreihe */
+.werte {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 4px 0 16px;
+  padding: 0;
+}
+.werte li {
+  background: var(--salbei-hell);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: .9rem;
+  color: var(--grau);
+}
+.werte b { display: block; font-size: 1.2rem; color: var(--text); font-family: var(--serif); }
+
+/* Weitere Hinweise zum Aufklappen */
+.weitere-titel { margin: 56px 0 18px; font-size: 1.4rem; }
+.weitere { border-top: 1px solid var(--linie); }
+.weitere details { border-bottom: 1px solid var(--linie); padding: 0 4px; }
+.weitere summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 36px 18px 0;
+  position: relative;
+  font-family: var(--serif);
+  font-size: 1.12rem;
+}
+.weitere summary::-webkit-details-marker { display: none; }
+.weitere summary::after {
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--sans);
+  font-size: 1.4rem;
+  color: var(--gruen-dunkel);
+  transition: transform .3s;
+}
+.weitere details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.weitere summary:hover { color: var(--gruen-dunkel); }
+.weitere details > *:not(summary) { max-width: 760px; }
+.weitere details[open] { padding-bottom: 10px; }
+
+/* Angebot Kacheln */
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.kachel {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--schatten);
+  padding: 30px 28px 14px;
+}
+.kachel h3 { color: var(--gruen-dunkel); font-size: 1.25rem; }
+.kachel p { color: var(--grau); font-size: .97rem; }
+
+/* Ausblick + kleines Mockup */
+.ausblick {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 56px;
+  padding: 40px;
+  background: var(--salbei-hell);
+  border-radius: var(--radius);
+}
+.ausblick h3 { font-size: 1.55rem; }
+.ausblick-liste { list-style: none; margin: 0 0 18px; padding: 0; }
+.ausblick-liste li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  color: var(--grau);
+}
+.ausblick-liste li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .5em;
+  width: 9px;
+  height: 5px;
+  border-left: 1.5px solid var(--gruen-dunkel);
+  border-bottom: 1.5px solid var(--gruen-dunkel);
+  transform: rotate(-45deg);
+}
+.ausblick-liste b { color: var(--text); }
+.ausblick-hinweis { font-size: .85rem; color: var(--grau); }
+
+.mock {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--schatten);
+  padding: 26px 22px 22px;
+  font-size: .9rem;
+}
+.mock-label {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: var(--text);
+  color: #fff;
+  font-size: .75rem;
+  letter-spacing: .04em;
+}
+.mock-titel { display: block; font-family: var(--serif); font-size: 1.15rem; margin-bottom: 12px; }
+.mock-feld {
+  display: block;
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  padding: 9px 12px;
+  margin-bottom: 9px;
+  color: var(--grau);
+  background: var(--creme);
+}
+.mock-feld small { display: block; font-size: .72rem; color: var(--grau); }
+.mock-feld span { color: var(--text); }
+.mock-wahl { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.mock-wahl span {
+  border: 1px solid var(--salbei-2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: .82rem;
+}
+.mock-wahl .an { background: var(--gruen-dunkel); color: #fff; border-color: var(--gruen-dunkel); }
+.mock-btn {
+  display: block;
+  text-align: center;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: var(--gruen-dunkel);
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+/* ---------- Beispiel - Browserfenster ---------- */
+.browser {
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(20,50,35,.05), 0 40px 80px -30px rgba(30,70,50,.32);
+  border: 1px solid var(--linie);
+}
+.browser-leiste {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 18px;
+  background: #eef2ee;
+}
+.browser-leiste > span { width: 11px; height: 11px; border-radius: 50%; background: #cfd8d2; }
+.browser-url {
+  margin-left: 14px;
+  flex: 1;
+  max-width: 340px;
+  background: #fff;
+  border-radius: 6px;
+  font-size: .78rem;
+  color: var(--grau);
+  padding: 3px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hintergrund mit weichen Formen statt Foto */
+.demo {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--salbei-hell) 0%, var(--creme) 100%);
+}
+.demo::before {
+  content: "";
+  position: absolute;
+  width: 460px; height: 420px;
+  right: -120px; top: 40px;
+  border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%;
+  background: var(--salbei);
+  pointer-events: none;
+}
+.demo > * { position: relative; }
+
+.demo-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 48px;
+}
+.demo-logo { display: flex; align-items: center; gap: 12px; line-height: 1.2; }
+.demo-zeichen {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--gruen);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.demo-logo-name { display: block; font-family: var(--serif); font-size: 1.2rem; color: var(--text); }
+.demo-logo-sub { font-size: .78rem; color: var(--grau); }
+.demo-menu {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  font-size: .9rem;
+}
+.demo-menu-kontakt { color: var(--gruen-dunkel); font-weight: 700; }
+.demo-burger { display: none; }
+
+/* Hero - Text links, Karte "Heute" rechts */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 44px;
+  align-items: center;
+  padding: clamp(30px, 5vw, 64px) 48px clamp(40px, 5vw, 64px);
+}
+.hero-ort { font-size: .95rem; color: var(--gruen-dunkel); margin-bottom: 12px; }
+.hero-titel {
+  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  margin-bottom: 18px;
+  max-width: 14em;
+}
+.hero-titel em { font-style: italic; color: var(--gruen-dunkel); }
+.hero-sub { font-size: 1.06rem; line-height: 1.7; color: var(--grau); max-width: 31em; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 22px; }
+.hero-trust {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  font-size: .88rem;
+  color: var(--grau);
+}
+.hero-trust li { position: relative; padding-left: 20px; }
+.hero-trust li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .4em;
+  width: 9px;
+  height: 5px;
+  border-left: 1.5px solid var(--gruen-dunkel);
+  border-bottom: 1.5px solid var(--gruen-dunkel);
+  transform: rotate(-45deg);
+}
+
+/* Karte mit Sprechzeiten - statt Foto */
+.zeiten-karte {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: var(--schatten);
+  padding: 24px 24px 18px;
+}
+.zeiten-karte h4 { font-size: 1.1rem; margin-bottom: 10px; }
+.zeiten-karte table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.zeiten-karte td { padding: 6px 0; border-bottom: 1px solid var(--linie); vertical-align: top; }
+.zeiten-karte td:first-child { width: 3em; color: var(--grau); }
+.zeiten-karte tr.heute td { color: var(--gruen-dunkel); font-weight: 700; }
+.zeiten-tel {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.zeiten-notfall { font-size: .8rem; color: var(--grau); margin: 6px 0 0; }
+
+/* Was bleibt - drei ruhige Punkte unter dem Hero */
+.demo-bleibt {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  padding: 8px 48px 44px;
+}
+.demo-bleibt div {
+  background: rgba(255,255,255,.75);
+  border: 1px solid var(--linie);
+  border-radius: 18px;
+  padding: 18px 20px;
+}
+.demo-bleibt b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.08rem; margin-bottom: 2px; }
+.demo-bleibt span { font-size: .9rem; color: var(--grau); }
+
+/* Link zur kompletten Startseite unter dem Beispiel */
+.beispiel-mehr { margin: 28px 0 0; text-align: center; }
+.beispiel-mehr .btn { white-space: normal; text-align: center; }
+
+/* Hinweis bei Klick im Beispiel - als Toast unten */
+.demo-hinweis {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 40;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  margin: 0;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: var(--text);
+  color: #fff;
+  font-size: .9rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+.demo-hinweis.an { opacity: 1; transform: translate(-50%, 0); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 12px 26px;
+  border-radius: 40px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background .2s, color .2s, transform .2s;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primaer {
+  background: var(--gruen-dunkel);
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(46,107,72,.6);
+}
+.btn-primaer:hover { background: var(--gruen-tief); color: #fff; }
+.btn-rahmen { border-color: var(--gruen-dunkel); color: var(--gruen-dunkel); background: transparent; }
+.btn-rahmen:hover { background: var(--salbei); }
+
+/* WhatsApp bewusst nicht WhatsApp-grün, sondern Salbei passend zur Seite */
+.btn-wa {
+  background: var(--salbei);
+  color: var(--gruen-tief);
+  border-color: var(--salbei-2);
+}
+.btn-wa:hover { background: var(--salbei-2); color: var(--gruen-tief); }
+.btn-mail { background: var(--gruen-dunkel); color: #fff; }
+.btn-mail:hover { background: var(--gruen-tief); color: #fff; }
+
+.icon { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+/* Kontakt */
+.kontakt {
+  position: relative;
+  overflow: hidden;
+  background: var(--salbei-hell);
+  text-align: center;
+}
+.kontakt::before {
+  content: "";
+  position: absolute;
+  width: 420px; height: 380px;
+  left: 50%; top: -220px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--salbei);
+}
+.kontakt .wrap { position: relative; }
+.kontakt-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 30px 0 18px;
+}
+.kontakt-adresse { color: var(--grau); font-size: .95rem; }
+.signatur { margin-top: 40px; font-family: var(--serif); font-size: 1.1rem; }
+.signatur b { font-weight: 600; }
+
+.footer {
+  padding: 40px 0 50px;
+  background: #1f2f26;
+  color: #cfdcd4;
+  font-size: .9rem;
+}
+.footer p { margin: 0 0 .5em; }
+.footer-klein { font-size: .8rem; opacity: .8; }
+
+/* Sticky Kontakt - Desktop: Pillen unten rechts */
+.sticky-kontakt {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: opacity .3s, transform .3s;
+}
+.sticky-kontakt a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px 11px 14px;
+  border-radius: 40px;
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .92rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+}
+.sticky-kontakt .btn-wa { border-color: var(--salbei-2); }
+.sticky-kontakt.weg { opacity: 0; transform: translateY(20px); pointer-events: none; }
+
+/* Scroll Animation - nur wenn JS an */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.js .reveal.sichtbar { opacity: 1; transform: none; }
+.js .gut-liste .reveal:nth-child(2n) { transition-delay: .08s; }
+.js .kacheln .reveal:nth-child(3n+2) { transition-delay: .08s; }
+.js .kacheln .reveal:nth-child(3n) { transition-delay: .16s; }
+
+
+/* ================= Responsive ================= */
+
+@media (max-width: 1180px) {
+  .hero { grid-template-columns: 1.25fr .75fr; gap: 32px; }
+}
+/* rechts Platz lassen, damit die Icons nichts verdecken */
+@media (min-width: 721px) and (max-width: 1180px) {
+  .wrap { padding-right: 76px; }
+}
+
+/* schwebende Pillen verdecken sonst Text - darunter nur runde Icons */
+@media (max-width: 1380px), (max-height: 500px) {
+  .sticky-kontakt { right: 12px; bottom: 12px; gap: 12px; }
+  .sticky-kontakt a {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .sticky-kontakt a span {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 960px) {
+  .demo-menu { display: none; }
+  .demo-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px; height: 44px;
+    padding: 0 10px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .demo-burger span { display: block; height: 2px; background: var(--text); border-radius: 2px; }
+  .kacheln { grid-template-columns: repeat(2, 1fr); }
+  .ausblick { grid-template-columns: 1fr; gap: 36px; }
+  .mock { max-width: 420px; }
+}
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .zeiten-karte { max-width: 420px; }
+  .demo-bleibt { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* Handy hoch */
+@media (max-width: 720px) {
+  body { font-size: 16.5px; }
+  .hide-sm { display: none; }
+  .gut-liste { grid-template-columns: 1fr; }
+  .vorher { grid-template-columns: 1fr; }
+  .punkt { grid-template-columns: 1fr; gap: 6px; padding: 24px 20px 10px; }
+  .punkt-nr { width: 40px; height: 40px; font-size: 1.15rem; }
+  .kacheln { grid-template-columns: 1fr; }
+  .ausblick { padding: 26px 20px; margin-top: 40px; }
+  .demo-nav { padding: 16px 20px; }
+  .demo-logo-sub { display: none; }
+  .demo-zeichen { width: 36px; height: 36px; font-size: .95rem; }
+  .hero { padding: 18px 20px 30px; gap: 26px; }
+  .demo-bleibt { padding: 0 20px 28px; }
+  .demo::before { width: 300px; height: 280px; right: -140px; top: 10px; }
+  .browser { border-radius: 18px; }
+  .browser-leiste { padding: 10px 14px; }
+  .topnav a { margin-left: 2px; padding: 14px 6px; }
+  .footer { padding-bottom: 96px; } /* Platz für die Leiste unten */
+}
+
+/* Handy hoch: Leiste unten statt Icons */
+@media (max-width: 720px) and (min-height: 501px) {
+  .sticky-kontakt {
+    left: 0; right: 0; bottom: 0;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(251,250,246,.94);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--linie);
+  }
+  .sticky-kontakt a {
+    flex: 1;
+    width: auto;
+    height: 46px;
+    border-radius: 30px;
+    justify-content: center;
+    box-shadow: none;
+  }
+  .sticky-kontakt a span { position: static; width: auto; height: auto; clip: auto; }
+}
+
+/* Buttons auf dem Handy immer einzeilig */
+@media (max-width: 720px) {
+  .btn { white-space: nowrap; padding: 12px 20px; }
+  .hero-btns .btn { flex: 1 1 auto; }
+}
+
+/* iPhone SE / 320px */
+@media (max-width: 360px) {
+  .wrap { padding: 0 16px; }
+  .topbar-titel { font-size: .98rem; }
+  .topnav a { font-size: .88rem; padding: 14px 4px; }
+  .btn { font-size: .93rem; padding: 12px 16px; }
+  .hero { padding: 14px 14px 24px; }
+  .demo-nav { padding: 14px; }
+  .demo-bleibt { padding: 0 14px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .sticky-kontakt { transition: none; }
+}
