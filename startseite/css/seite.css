@@ -111,7 +111,8 @@ section[id] { scroll-margin-top: 84px; }
 .logo-zeichen {
   width: 46px; height: 46px;
   border-radius: 50%;
-  background: var(--gruen);
+  background: var(--gruen-dunkel); /* weiß auf hellgrün war zu schwach, hellgrün jetzt als Ring */
+  box-shadow: 0 0 0 3px var(--gruen);
   color: #fff;
   font-family: var(--serif);
   font-size: 1.1rem;

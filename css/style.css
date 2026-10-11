@@ -466,7 +466,8 @@ section[id] { scroll-margin-top: 64px; }
 .demo-zeichen {
   width: 42px; height: 42px;
   border-radius: 50%;
-  background: var(--gruen);
+  background: var(--gruen-dunkel);
+  box-shadow: 0 0 0 3px var(--gruen);
   color: #fff;
   font-family: var(--serif);
   font-size: 1.05rem;
