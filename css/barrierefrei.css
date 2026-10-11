@@ -147,7 +147,7 @@ html.a11y-kontrast .footer { color: #fff !important; }
 html.a11y-kontrast .kachel,
 html.a11y-kontrast .punkt,
 html.a11y-kontrast .zeiten-karte,
-html.a11y-kontrast .termin-form,
+html.a11y-kontrast .buchung-form,
 html.a11y-kontrast .gruss-platz { box-shadow: none; border: 2px solid #000; }
 html.a11y-kontrast .feld input[type="text"],
 html.a11y-kontrast .feld textarea { border: 2px solid #000; }
