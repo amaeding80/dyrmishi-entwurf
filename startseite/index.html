@@ -11,10 +11,14 @@
 <link rel="preload" href="../fonts/lora-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/seite.css">
 <link rel="stylesheet" href="../css/barrierefrei.css">
+<link rel="stylesheet" href="css/varianten.css">
 <script>
   // JS an + gespeicherte Lesehilfe sofort setzen (sonst flackert es beim Laden)
   (function (h) {
     h.className += ' js';
+    // Design-Variante zum Vergleichen: ?v=1, ?v=2 oder ?v=3
+    var v = (location.search.match(/[?&]v=([123])/) || [])[1];
+    if (v) h.className += ' v' + v;
     try {
       var s = JSON.parse(localStorage.getItem('praxis-lesehilfe')) || {};
       if (s.schrift) h.className += ' a11y-schrift-' + s.schrift;

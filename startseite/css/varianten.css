@@ -1,0 +1,145 @@
+/* Drei Design-Varianten nach Alex' Rückmeldung ("sieht nach Kanzlei aus").
+   Umschalten: startseite/?v=1, ?v=2, ?v=3 (setzt Klasse v1/v2/v3 am <html>).
+   Ohne Parameter bleibt die bisherige Nachtblau-Fassung.
+   Geändert werden nur Farben, Schriften und der erste Bildschirm - Inhalt und Aufbau bleiben.
+   Alle Paare auf WCAG AA geprüft (Werte jeweils im Kommentar). */
+
+/* Schriften lokal (OFL), nur Überschriften - Fließtext bleibt Source Sans 3 */
+@font-face { font-family: "Figtree"; src: url("../../fonts/figtree-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Figtree"; src: url("../../fonts/figtree-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("../../fonts/nunito-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("../../fonts/nunito-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../../fonts/dm-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("../../fonts/dm-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+/* ================= V1 - hell & warm (Terrakotta, Sand, etwas Petrol) =================
+   Weiß auf Terrakotta 5,7 · Terrakotta auf Sand 4,9 · Grau auf Sand 6,4 · Petrol auf Chip 5,6 · Koralle auf Espresso 8,0 */
+html.v1 {
+  --papier: #fcf7f1;
+  --papier-2: #f6ece1;
+  --sand: #eddccb;
+  --linie: #e6d8c8;
+  --text: #2a201c;
+  --grau: #5e534d;
+  --tinte: #3a2a24;        /* Espresso statt Nachtblau: dunkle Kästen, Fuß */
+  --tinte-tief: #2a1d18;
+  --apricot: #f6b89c;      /* Koralle hell */
+  --apricot-hell: #fbe1d4;
+  --terrakotta: #b0432a;
+  --petrol: #1d6670;       /* nur klein, als Zweitfarbe */
+  --aktion: #b0432a;
+  --aktion-hover: #963722;
+  --aktion-text: #fff;
+  --serif: "Figtree", "Source Sans 3", Arial, sans-serif;
+  --radius: 14px;
+}
+html.v1 .hero-bereich { background: var(--papier-2); color: var(--text); border-bottom: 1px solid var(--linie); }
+html.v1 .hero-chip { border: 0; border-radius: 30px; padding: 6px 14px; background: #e0eff0; color: var(--petrol); text-transform: none; letter-spacing: 0; font-size: .95rem; }
+html.v1 .hero-titel { font-weight: 800; letter-spacing: -.025em; }
+html.v1 .unterstrich { color: var(--terrakotta); background-image: linear-gradient(var(--apricot), var(--apricot)); background-size: 100% 7px; background-position: 0 92%; }
+html.v1 .hero-sub { color: var(--grau); }
+html.v1 .zeiten-karte { background: #fff; border: 1px solid var(--linie); border-top: 6px solid var(--terrakotta); box-shadow: 0 24px 50px -30px rgba(90,50,30,.35); }
+
+/* ================= V2 - hell & zuversichtlich (Sonnenblume, Braun) =================
+   Braun auf Sonnengelb 7,7 · Grau auf Papier 7,5 · Orange-Braun auf Papier 6,1 · Gelb auf Braun 8,7 · Grau auf Gelb-Karte 6,9 */
+html.v2 {
+  --papier: #fffbf2;
+  --papier-2: #fff4dc;
+  --sand: #f3e3bf;
+  --linie: #eadfc6;
+  --text: #33241a;
+  --grau: #5f5044;
+  --tinte: #3b2a1e;
+  --tinte-tief: #2b1e15;
+  --apricot: #f7c948;      /* Sonnenblume */
+  --apricot-hell: #fdefc0;
+  --terrakotta: #9a4a0b;
+  --aktion: #f5b821;
+  --aktion-hover: #f8c94f;
+  --aktion-text: #33241a;
+  --serif: "Nunito", "Source Sans 3", Arial, sans-serif;
+  --radius: 20px;
+}
+html.v2 .btn { border-radius: 40px; }
+html.v2 .hero-bereich { background: var(--papier); color: var(--text); border-bottom: 0; }
+html.v2 .hero-chip { border: 2px solid var(--tinte); border-radius: 30px; padding: 4px 14px; color: var(--tinte); text-transform: none; letter-spacing: 0; font-size: .95rem; }
+html.v2 .hero-titel { font-weight: 800; letter-spacing: -.015em; font-size: clamp(2.2rem, 5vw, 3.9rem); }
+html.v2 .unterstrich, html.v3 .unterstrich { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+/* Textmarker in Sonnengelb unter dem neuen Namen */
+html.v2 .unterstrich { color: var(--text); background-image: linear-gradient(var(--apricot), var(--apricot)); background-size: 100% .38em; background-position: 0 88%; padding: 0 .08em; }
+html.v2 .hero-sub { color: var(--grau); }
+html.v2 .zeiten-karte { background: #fff1c4; border: 2px solid var(--tinte); box-shadow: 8px 8px 0 var(--tinte); }
+html.v2 .karte-tabelle th, html.v2 .karte-tabelle td { border-bottom-color: #ead79b; }
+html.v2 .logo-zeichen { border-radius: 50%; background: var(--apricot); color: var(--tinte); }
+
+/* ================= V3 - ruhig & frisch (Himmelblau, Pfirsich) =================
+   Weiß auf Blau 5,3 · Grau auf Himmel 5,6 · Blau auf Papier 6,2 · Chip 6,9 · Pfirsich auf Tiefblau 6,8 */
+html.v3 {
+  --papier: #f7fafc;
+  --papier-2: #edf4f9;
+  --sand: #dbe8f1;
+  --linie: #dbe5ec;
+  --text: #1b2b38;
+  --grau: #4d5d6b;
+  --tinte: #1f4560;        /* nur für kleine dunkle Kästen, nicht als große Fläche */
+  --tinte-tief: #173548;
+  --apricot: #ffc9a8;      /* Pfirsich */
+  --apricot-hell: #ffe6d6;
+  --terrakotta: #23609e;   /* Akzentschrift hier blau */
+  --aktion: #2f6db5;
+  --aktion-hover: #255c9c;
+  --aktion-text: #fff;
+  --serif: "DM Sans", "Source Sans 3", Arial, sans-serif;
+  --radius: 16px;
+}
+html.v3 .btn { border-radius: 12px; }
+html.v3 .hero-bereich { background: linear-gradient(180deg, #dcecf8 0%, #eef5fb 100%); color: var(--text); border-bottom: 0; }
+html.v3 .hero-chip { border: 0; border-radius: 30px; padding: 6px 14px; background: #ffe0cc; color: #7a3a14; text-transform: none; letter-spacing: 0; font-size: .95rem; }
+html.v3 .hero-titel { font-weight: 700; letter-spacing: -.03em; }
+html.v3 .unterstrich { color: var(--text); background-image: linear-gradient(var(--apricot), var(--apricot)); background-size: 100% .34em; background-position: 0 88%; padding: 0 .06em; }
+html.v3 .hero-sub { color: var(--grau); }
+html.v3 .zeiten-karte { background: #fff; box-shadow: 0 20px 50px -24px rgba(31,69,96,.3); }
+
+/* ================= gemeinsam für alle drei ================= */
+html.v1 h1, html.v1 h2, html.v1 h3,
+html.v2 h1, html.v2 h2, html.v2 h3,
+html.v3 h1, html.v3 h2, html.v3 h3 { font-weight: 700; }
+html.v1 .logo-name, html.v2 .logo-name, html.v3 .logo-name { font-weight: 700; }
+html.v1 .zitat p, html.v2 .zitat p, html.v3 .zitat p { font-style: normal; } /* Kursiv gibt es in den neuen Schriften nicht lokal */
+html.v1 .logo-zeichen, html.v3 .logo-zeichen { background: var(--aktion); color: #fff; font-weight: 800; }
+
+/* Hauptknopf: kräftige Aktionsfarbe statt Apricot auf Nachtblau */
+html.v1 .btn-hell, html.v2 .btn-hell, html.v3 .btn-hell,
+html.v1 .btn-dunkel, html.v2 .btn-dunkel, html.v3 .btn-dunkel,
+html.v1 .menue .menue-kontakt, html.v2 .menue .menue-kontakt, html.v3 .menue .menue-kontakt { background: var(--aktion); color: var(--aktion-text); }
+html.v1 .btn-hell:hover, html.v2 .btn-hell:hover, html.v3 .btn-hell:hover,
+html.v1 .btn-dunkel:hover, html.v2 .btn-dunkel:hover, html.v3 .btn-dunkel:hover,
+html.v1 .menue .menue-kontakt:hover, html.v2 .menue .menue-kontakt:hover, html.v3 .menue .menue-kontakt:hover { background: var(--aktion-hover); color: var(--aktion-text); }
+/* Zweitknopf im hellen Hero: Rahmen in Textfarbe */
+html.v1 .btn-rahmen-hell, html.v2 .btn-rahmen-hell, html.v3 .btn-rahmen-hell { border-color: var(--tinte); color: var(--tinte); background: rgba(255,255,255,.6); }
+html.v1 .btn-rahmen-hell:hover, html.v2 .btn-rahmen-hell:hover, html.v3 .btn-rahmen-hell:hover { background: #fff; color: var(--tinte); }
+html.v3 .btn-rahmen-hell { border-color: var(--aktion); color: var(--aktion); }
+html.v1 .anruf-rund, html.v2 .anruf-rund, html.v3 .anruf-rund { background: var(--aktion); color: var(--aktion-text); }
+
+@media (max-width: 720px) {
+  html.v1 .zeiten-tel, html.v2 .zeiten-tel, html.v3 .zeiten-tel { background: var(--aktion); color: var(--aktion-text); }
+  html.v2 .zeiten-karte { box-shadow: 5px 5px 0 var(--tinte); }
+}
+
+/* ================= Hoher Kontrast je Variante (Lesehilfe) =================
+   Hero ist hell: Untertitel dunkel statt weiß, Farben jeweils deutlich dunkler */
+html.a11y-kontrast.v1, html.a11y-kontrast.v2, html.a11y-kontrast.v3 {
+  --text: #000;
+  --grau: #1a1a1a;
+  --linie: #4a4a4a;
+  --papier: #fff;
+  --papier-2: #fff;
+  --sand: #fff;
+}
+html.a11y-kontrast.v1 { --tinte: #24170f; --terrakotta: #7e2a14; --aktion: #7e2a14; --aktion-hover: #5f1f0e; }
+html.a11y-kontrast.v2 { --tinte: #24170f; --terrakotta: #6e3205; --aktion: #24170f; --aktion-hover: #000; --aktion-text: #ffd84d; }
+html.a11y-kontrast.v3 { --tinte: #0f2a3d; --terrakotta: #123f6e; --aktion: #123f6e; --aktion-hover: #0b2c4f; }
+html.a11y-kontrast.v1 .hero-sub, html.a11y-kontrast.v2 .hero-sub, html.a11y-kontrast.v3 .hero-sub { color: #000 !important; }
+html.a11y-kontrast.v1 .hero-bereich, html.a11y-kontrast.v2 .hero-bereich, html.a11y-kontrast.v3 .hero-bereich { background: #fff; border-bottom: 2px solid #000; }
+html.a11y-kontrast.v1 .hero-chip, html.a11y-kontrast.v3 .hero-chip { background: #fff; color: #000; border: 2px solid #000; }
+html.a11y-kontrast.v2 .zeiten-karte { background: #fff; }
