@@ -1,18 +1,16 @@
 /* Entwurf Startseite Dyrmishi - eigene Seite, gleiche Farben wie die Analyse */
 
-/* Schriften lokal (OFL) */
+/* Schriften lokal (OFL): DM Sans für Überschriften (freundlich, modern), Source Sans 3 für Text (offen, gut lesbar) */
 @font-face {
-  font-family: "Lora";
-  src: url("../../fonts/lora-latin-500-normal.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
+  font-family: "DM Sans";
+  src: url("../../fonts/dm-sans-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
   font-display: swap;
 }
 @font-face {
-  font-family: "Lora";
-  src: url("../../fonts/lora-latin-500-italic.woff2") format("woff2");
-  font-weight: 500;
-  font-style: italic;
+  font-family: "DM Sans";
+  src: url("../../fonts/dm-sans-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
   font-display: swap;
 }
 @font-face {
@@ -28,26 +26,29 @@
   font-display: swap;
 }
 
-/* Nachtrag: mutiger, ohne Grün und ohne weiche Blobs.
-   Tinte (Nachtblau) als große Fläche, Apricot als einziger warmer Akzent, Papier als Grund.
-   Kontraste: Papier auf Tinte 13:1, Apricot auf Tinte 7,8:1, Terrakotta auf Papier 5,7:1 */
+/* Farben: helles Himmelblau als Grund, warmes Pfirsich als Akzent, kräftiges Blau für Knöpfe.
+   Bewusst nicht Arzt-Grün und nicht dunkel-förmlich (Alex: "sieht nach Kanzlei aus").
+   Kontraste: Weiß auf Blau 5,3:1 · Akzent auf Papier 6,2:1 · Grau auf Himmel 5,6:1 · Pfirsich auf Tiefblau 6,8:1 */
 :root {
-  --tinte: #1d2b4a;
-  --tinte-tief: #121c33;
-  --tinte-2: #2a3a5e;
-  --apricot: #f2b48a;
-  --apricot-hell: #fbe3d1;
-  --terrakotta: #a2471f;
-  --papier: #fbf8f2;
-  --papier-2: #f4eee4;
-  --sand: #e9dfd1;
-  --text: #1c2333;
-  --grau: #5a5f6b;
-  --linie: #e2d9cb;
-  --rot: #a83a2c;
-  --serif: "Lora", Georgia, "Times New Roman", serif;
+  --himmel: #dcecf8;
+  --himmel-hell: #eef5fb;
+  --blau: #2f6db5;          /* Knöpfe, Links */
+  --blau-dunkel: #255c9c;
+  --tiefblau: #1f4560;      /* nur kleine dunkle Kästen und Fuß */
+  --tiefblau-dunkel: #173548;
+  --pfirsich: #ffc9a8;
+  --pfirsich-hell: #ffe6d6;
+  --akzent: #23609e;        /* Akzentschrift auf hell */
+  --papier: #f7fafc;
+  --papier-2: #edf4f9;
+  --sand: #dbe8f1;
+  --text: #1b2b38;
+  --grau: #4d5d6b;
+  --linie: #dbe5ec;
+  --titel: "DM Sans", "Source Sans 3", Arial, sans-serif;
   --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --radius: 10px; /* bewusst kleine Radien, wirkt weniger nach Baukasten */
+  --rot: #a83a2c;
+  --radius: 16px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -63,20 +64,20 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: var(--serif);
-  font-weight: 500;
+  font-family: var(--titel);
+  font-weight: 700;
   line-height: 1.15;
   margin: 0 0 .55em;
   overflow-wrap: break-word;
   hyphens: auto;
 }
-h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -.01em; }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -.02em; }
 h3 { font-size: 1.2rem; }
 p { margin: 0 0 1em; }
-a { color: var(--tinte); text-underline-offset: 3px; }
-a:hover { color: var(--terrakotta); }
+a { color: var(--blau); text-underline-offset: 3px; }
+a:hover { color: var(--blau-dunkel); }
 a:focus-visible, button:focus-visible, main:focus-visible {
-  outline: 3px solid var(--terrakotta);
+  outline: 3px solid var(--blau);
   outline-offset: 3px;
 }
 main:focus { outline: none; }
@@ -91,7 +92,7 @@ section[id] { scroll-margin-top: 84px; }
   top: -60px;
   z-index: 100;
   padding: 10px 16px;
-  background: var(--tinte);
+  background: var(--tiefblau);
   color: #fff;
   border-radius: 6px;
 }
@@ -100,8 +101,8 @@ section[id] { scroll-margin-top: 84px; }
 .entwurf-hinweis {
   margin: 0;
   padding: 6px 16px;
-  background: var(--tinte-tief);
-  color: #d5dae6;
+  background: var(--tiefblau-dunkel);
+  color: #d3e0ea;
   font-size: .8rem;
   text-align: center;
 }
@@ -126,9 +127,10 @@ section[id] { scroll-margin-top: 84px; }
 .logo-zeichen {
   width: 46px; height: 46px;
   border-radius: 8px;
-  background: var(--tinte);
-  color: var(--apricot);
-  font-family: var(--serif);
+  background: var(--blau);
+  color: #fff;
+  font-family: var(--titel);
+  font-weight: 700;
   font-size: 1.1rem;
   display: flex;
   align-items: center;
@@ -136,7 +138,7 @@ section[id] { scroll-margin-top: 84px; }
   flex-shrink: 0;
 }
 .logo-text { line-height: 1.2; }
-.logo-name { display: block; font-family: var(--serif); font-size: 1.22rem; }
+.logo-name { display: block; font-family: var(--titel); font-weight: 700; font-size: 1.22rem; letter-spacing: -.01em; }
 .logo-sub { display: block; font-size: .82rem; color: var(--grau); }
 .nur-schmal, .nur-handy { display: none; }
 
@@ -148,23 +150,22 @@ section[id] { scroll-margin-top: 84px; }
   font-size: 1rem;
   white-space: nowrap;
 }
-.menue a:hover { color: var(--terrakotta); text-decoration: underline; }
+.menue a:hover { color: var(--akzent); text-decoration: underline; }
 .menue .menue-kontakt {
   margin-left: 8px;
   padding: 10px 20px;
-  border-radius: 6px;
-  background: var(--tinte);
+  border-radius: 12px;
+  background: var(--blau);
   color: #fff;
   font-weight: 700;
 }
-.menue .menue-kontakt:hover { background: var(--tinte-tief); color: #fff; text-decoration: none; }
+.menue .menue-kontakt:hover { background: var(--blau-dunkel); color: #fff; text-decoration: none; }
 .burger { display: none; }
 
-/* Hero - große Tinten-Fläche, keine Deko-Formen */
+/* Hero - heller Himmel-Verlauf, keine Deko-Formen, kein Foto */
 .hero-bereich {
-  background: var(--tinte);
-  color: var(--papier);
-  border-bottom: 6px solid var(--apricot);
+  background: linear-gradient(180deg, var(--himmel) 0%, var(--himmel-hell) 100%);
+  color: var(--text);
 }
 .hero {
   display: grid;
@@ -177,42 +178,42 @@ section[id] { scroll-margin-top: 84px; }
 .hero-chip {
   display: inline-block;
   margin-bottom: 22px;
-  padding: 5px 12px;
-  border: 1px solid rgba(242,180,138,.6);
-  border-radius: 4px;
-  color: var(--apricot);
-  font-size: .9rem;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: #ffe0cc;
+  color: #7a3a14; /* 6,9:1 */
+  font-size: .95rem;
   font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
 }
 .hero-titel {
   font-size: clamp(2.3rem, 5.4vw, 4.3rem);
-  line-height: 1.04;
-  letter-spacing: -.02em;
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -.03em;
   margin-bottom: 26px;
   max-width: 12.5em;
   hyphens: manual;
 }
-/* Akzent ohne Kursiv: kräftige Apricot-Linie unter dem neuen Namen */
+/* Akzent: Pfirsich-Textmarker unter dem neuen Namen */
 .unterstrich {
-  color: var(--apricot);
-  background-image: linear-gradient(var(--apricot), var(--apricot));
-  background-size: 100% 4px;
-  background-position: 0 96%;
+  background-image: linear-gradient(var(--pfirsich), var(--pfirsich));
+  background-size: 100% .34em;
+  background-position: 0 88%;
   background-repeat: no-repeat;
-  padding-bottom: 4px;
+  padding: 0 .06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
-.hero-sub { font-size: 1.15rem; line-height: 1.65; color: #d9deea; max-width: 32em; }
+.hero-sub { font-size: 1.15rem; line-height: 1.65; color: var(--grau); max-width: 32em; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 
-/* Karte Sprechzeiten auf der dunklen Fläche */
+/* Karte Sprechzeiten */
 .zeiten-karte {
-  background: var(--papier);
+  background: #fff;
   color: var(--text);
   border-radius: var(--radius);
   padding: 28px 28px 22px;
-  box-shadow: 0 30px 60px -30px rgba(0,0,0,.5);
+  box-shadow: 0 20px 50px -24px rgba(31,69,96,.3);
 }
 .karte-titel { font-size: 1.35rem; margin-bottom: 8px; }
 .karte-tabelle { width: 100%; border-collapse: collapse; font-size: 1rem; }
@@ -224,8 +225,8 @@ section[id] { scroll-margin-top: 84px; }
   margin-left: 8px;
   padding: 1px 8px;
   border-radius: 4px;
-  background: var(--apricot);
-  color: var(--tinte);
+  background: var(--pfirsich);
+  color: var(--text);
   font-size: .75rem;
   font-weight: 700;
   vertical-align: 2px;
@@ -235,18 +236,19 @@ section[id] { scroll-margin-top: 84px; }
   display: inline-block;
   margin-top: 14px;
   padding: 6px 0;
-  font-family: var(--serif);
+  font-family: var(--titel);
+  font-weight: 700;
   font-size: 1.55rem;
-  color: var(--tinte);
+  color: var(--tiefblau);
   text-decoration: none;
 }
-.zeiten-tel:hover { color: var(--terrakotta); }
+.zeiten-tel:hover { color: var(--blau); }
 .alle-zeiten { display: block; padding: 10px 0 2px; font-size: .95rem; font-weight: 700; }
 
 /* Zwei Wege */
 .wege { background: var(--papier); padding: clamp(56px, 8vw, 96px) 0 0; }
 .wege-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-.weg { border-top: 2px solid var(--tinte); }
+.weg { border-top: 2px solid var(--tiefblau); }
 .weg { padding: 40px 48px 40px 0; }
 .weg-neu { padding: 40px 0 40px 48px; border-left: 1px solid var(--linie); }
 .weg-titel { font-size: clamp(1.6rem, 2.8vw, 2.1rem); }
@@ -260,9 +262,9 @@ section[id] { scroll-margin-top: 84px; }
   display: inline-block;
   margin-top: 2px;
   padding: 0 8px;
-  border: 1px dashed var(--terrakotta);
+  border: 1px dashed var(--akzent);
   border-radius: 4px;
-  color: var(--terrakotta) !important;
+  color: var(--akzent) !important;
   font-size: .82rem !important;
 }
 .weg-links { margin: 14px 0 0; display: flex; gap: 24px; }
@@ -275,14 +277,14 @@ section[id] { scroll-margin-top: 84px; }
 .abschnitt-leistungen { background: var(--papier); }
 .abschnitt-anfahrt { background: var(--papier-2); }
 .abschnitt-kontakt { background: var(--papier); }
-.eyebrow { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--terrakotta); margin-bottom: 10px; }
+.eyebrow { font-size: 1rem; font-weight: 700; color: var(--akzent); margin-bottom: 10px; }
 .abschnitt-text { max-width: 640px; color: var(--grau); margin-bottom: 34px; }
 
 /* Wechsel */
 .wechsel { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: start; }
-.zitat { position: relative; margin: 22px 0 0; padding: 0 0 0 28px; border-left: 4px solid var(--apricot); }
+.zitat { position: relative; margin: 22px 0 0; padding: 0 0 0 28px; border-left: 4px solid var(--pfirsich); }
 .zitat blockquote { margin: 0; }
-.zitat p { font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.6; }
+.zitat p { font-family: var(--titel); font-weight: 600; font-size: 1.22rem; line-height: 1.6; }
 .zitat figcaption { color: var(--grau); font-size: .95rem; }
 .gruss-platz {
   position: relative;
@@ -299,32 +301,32 @@ section[id] { scroll-margin-top: 84px; }
   left: 22px;
   padding: 2px 12px;
   border-radius: 4px;
-  background: var(--tinte);
+  background: var(--tiefblau);
   color: #fff;
   font-size: .75rem;
   letter-spacing: .03em;
 }
-.gruss-titel, .gruss-unterschrift { font-family: var(--serif); color: var(--text); font-size: 1.12rem; }
+.gruss-titel, .gruss-unterschrift { font-family: var(--titel); color: var(--text); font-size: 1.12rem; }
 
 /* Sprechzeiten ausführlich */
 .zeiten { display: grid; grid-template-columns: 1.35fr .65fr; gap: 56px; align-items: end; }
-.zeiten-tabelle { width: 100%; border-collapse: collapse; font-size: 1.1rem; border-top: 2px solid var(--tinte); }
+.zeiten-tabelle { width: 100%; border-collapse: collapse; font-size: 1.1rem; border-top: 2px solid var(--tiefblau); }
 .zeiten-tabelle th, .zeiten-tabelle td { padding: 16px 12px 16px 0; border-bottom: 1px solid var(--linie); text-align: left; }
 .zeiten-tabelle th { font-weight: 700; width: 34%; }
-.zeiten-tabelle tr.heute th, .zeiten-tabelle tr.heute td { background: var(--apricot-hell); }
+.zeiten-tabelle tr.heute th, .zeiten-tabelle tr.heute td { background: var(--pfirsich-hell); }
 .zeiten-tabelle tr.heute th { padding-left: 14px; }
-.zeiten-tabelle tr.heute th::after { content: " · heute"; font-weight: 400; color: var(--terrakotta); font-size: .9rem; }
-.notfall { background: var(--tinte); color: var(--papier); border-radius: var(--radius); padding: 28px 28px 20px; }
+.zeiten-tabelle tr.heute th::after { content: " · heute"; font-weight: 400; color: var(--akzent); font-size: .9rem; }
+.notfall { background: var(--tiefblau); color: var(--papier); border-radius: var(--radius); padding: 28px 28px 20px; }
 .notfall h3 { margin-bottom: 14px; color: #fff; }
-.notfall p { color: #cfd5e2; margin: 0; font-size: .98rem; }
+.notfall p { color: #d3e0ea; margin: 0; font-size: .98rem; }
 .notfall-nr {
   display: inline-flex;
   align-items: center;
   min-height: 48px; /* Tippfläche */
   margin-bottom: 10px;
-  font-family: var(--serif);
+  font-family: var(--titel);
   font-size: 2.1rem;
-  color: var(--apricot);
+  color: var(--pfirsich);
   text-decoration: none;
 }
 .notfall-nr:hover { color: #fff; }
@@ -336,10 +338,10 @@ section[id] { scroll-margin-top: 84px; }
   grid-template-columns: repeat(3, 1fr);
   gap: 0 40px;
   margin: 0;
-  border-top: 2px solid var(--tinte);
+  border-top: 2px solid var(--tiefblau);
 }
 .leistungen > div { padding: 22px 0 20px; border-bottom: 1px solid var(--linie); }
-.leistungen dt { font-family: var(--serif); font-size: 1.25rem; margin-bottom: 4px; }
+.leistungen dt { font-family: var(--titel); font-size: 1.25rem; margin-bottom: 4px; }
 .leistungen dd { margin: 0; color: var(--grau); font-size: 1rem; }
 .leistungen-hinweis { margin: 22px 0 0; font-size: .9rem; color: var(--grau); }
 
@@ -347,44 +349,44 @@ section[id] { scroll-margin-top: 84px; }
 .anfahrt { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .adress-block {
   font-style: normal;
-  font-family: var(--serif);
+  font-family: var(--titel);
   font-size: clamp(1.5rem, 2.6vw, 2rem);
   line-height: 1.35;
   padding: 36px 40px;
-  background: var(--tinte);
+  background: var(--tiefblau);
   color: var(--papier);
   border-radius: var(--radius);
-  border-left: 8px solid var(--apricot);
+  border-left: 8px solid var(--pfirsich);
 }
-.adress-klein { display: block; font-family: var(--sans); font-size: .9rem; color: var(--apricot); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 10px; }
+.adress-klein { display: block; font-family: var(--sans); font-size: 1rem; color: var(--pfirsich); font-weight: 700; margin-bottom: 10px; }
 
 /* Kontakt */
 .kontakt { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: end; }
 .kontakt-tel {
   display: inline-block;
-  font-family: var(--serif);
+  font-family: var(--titel);
   font-size: clamp(2.2rem, 5vw, 3.6rem);
-  color: var(--tinte);
+  color: var(--tiefblau);
   text-decoration: none;
-  border-bottom: 4px solid var(--apricot);
+  border-bottom: 4px solid var(--pfirsich);
   line-height: 1.2;
 }
-.kontakt-tel:hover { color: var(--terrakotta); }
-.kontakt-liste { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--tinte); }
+.kontakt-tel:hover { color: var(--blau); }
+.kontakt-liste { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--tiefblau); }
 .kontakt-liste li { display: flex; flex-direction: column; padding: 16px 0; border-bottom: 1px solid var(--linie); font-size: 1.1rem; }
 .kontakt-liste span { color: var(--grau); font-size: .95rem; }
 .kontakt-liste a { font-weight: 700; overflow-wrap: anywhere; }
 .kontakt-liste .platzhalter { align-self: flex-start; margin-top: 6px; }
 
 /* Fuß */
-.fuss { background: var(--tinte-tief); color: #cdd3e0; padding: 44px 0 34px; font-size: .95rem; }
+.fuss { background: var(--tiefblau-dunkel); color: #d3e0ea; padding: 44px 0 34px; font-size: .95rem; }
 .fuss-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .fuss p { margin: 0 0 .4em; }
-.fuss-name { font-family: var(--serif); font-size: 1.15rem; color: #fff; }
-.fuss-links a { color: #cdd3e0; margin-left: 18px; padding: 10px 0; display: inline-block; }
+.fuss-name { font-family: var(--titel); font-size: 1.15rem; color: #fff; }
+.fuss-links a { color: #d3e0ea; margin-left: 18px; padding: 10px 0; display: inline-block; }
 .fuss .fuss-klein { margin: 20px auto 0; font-size: .8rem; opacity: .75; }
 
-/* Buttons - eckiger, kräftiger */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -392,7 +394,7 @@ section[id] { scroll-margin-top: 84px; }
   gap: 10px;
   min-height: 54px;
   padding: 13px 26px;
-  border-radius: 6px;
+  border-radius: 12px;
   font-family: var(--sans);
   font-size: 1.05rem;
   font-weight: 700;
@@ -401,13 +403,11 @@ section[id] { scroll-margin-top: 84px; }
   transition: background .2s, color .2s;
   cursor: pointer;
 }
-.btn-hell { background: var(--apricot); color: var(--tinte); }
-.btn-hell:hover { background: #f7c9a8; color: var(--tinte); }
-.btn-rahmen-hell { border-color: rgba(251,248,242,.7); color: var(--papier); }
-.btn-rahmen-hell:hover { background: rgba(255,255,255,.08); color: #fff; }
-.btn-dunkel { background: var(--tinte); color: #fff; }
-.btn-dunkel:hover { background: var(--tinte-tief); color: #fff; }
-.btn-rahmen { border-color: var(--tinte); color: var(--tinte); background: var(--papier); }
+/* Hauptknopf blau, Zweitknopf weiß mit blauem Rahmen */
+.btn-blau { background: var(--blau); color: #fff; }
+.btn-blau:hover { background: var(--blau-dunkel); color: #fff; }
+.btn-rahmen { border-color: var(--blau); color: var(--blau); background: #fff; }
+.btn-rahmen:hover { background: var(--himmel-hell); color: var(--blau-dunkel); }
 .icon { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
 .handy-leiste, .anruf-rund { display: none; }
@@ -423,7 +423,7 @@ section[id] { scroll-margin-top: 84px; }
   margin: 0;
   padding: 12px 18px;
   border-radius: 8px;
-  background: var(--tinte-tief);
+  background: var(--tiefblau-dunkel);
   color: #fff;
   font-size: .92rem;
   text-align: center;
@@ -524,8 +524,8 @@ section[id] { scroll-margin-top: 84px; }
     width: 100%;
     margin-top: 14px;
     padding: 12px;
-    border-radius: 6px;
-    background: var(--tinte);
+    border-radius: 12px;
+    background: var(--blau);
     color: #fff;
     font-family: var(--sans);
     font-weight: 700;
@@ -541,7 +541,7 @@ section[id] { scroll-margin-top: 84px; }
   .zeiten-tabelle tr { display: block; border-bottom: 1px solid var(--linie); padding: 10px 0; }
   .zeiten-tabelle td:empty { display: none; }
   .zeiten-tabelle th { width: auto; padding-bottom: 2px; }
-  .zeiten-tabelle tr.heute { background: var(--apricot-hell); }
+  .zeiten-tabelle tr.heute { background: var(--pfirsich-hell); }
   .zeiten-tabelle tr.heute th, .zeiten-tabelle tr.heute td { background: none; }
   .zeiten-tabelle tr.heute th { padding-left: 12px; }
   /* Leistungen: schlichte Liste, eine Spalte */
@@ -593,8 +593,8 @@ section[id] { scroll-margin-top: 84px; }
     z-index: 25;
     width: 52px; height: 52px;
     border-radius: 50%;
-    background: var(--tinte);
-    color: var(--apricot);
+    background: var(--blau);
+    color: #fff;
     box-shadow: 0 8px 20px rgba(0,0,0,.25);
   }
   .anruf-rund .icon { width: 24px; height: 24px; }
@@ -614,9 +614,9 @@ section[id] { scroll-margin-top: 84px; }
   display: inline-block;
   margin-bottom: 14px;
   padding: 3px 10px;
-  border: 1px dashed var(--terrakotta);
+  border: 1px dashed var(--akzent);
   border-radius: 4px;
-  color: var(--terrakotta);
+  color: var(--akzent);
   font-size: .85rem;
   font-weight: 700;
 }
@@ -624,7 +624,7 @@ section[id] { scroll-margin-top: 84px; }
 .termin-form {
   background: #fff;
   border: 1px solid var(--linie);
-  border-top: 4px solid var(--tinte);
+  border-top: 4px solid var(--blau);
   border-radius: var(--radius);
   padding: 28px 28px 22px;
 }
@@ -644,21 +644,21 @@ section[id] { scroll-margin-top: 84px; }
   color: var(--text);
 }
 .feld textarea { resize: vertical; }
-.feld input:focus, .feld textarea:focus { outline: 3px solid var(--apricot); outline-offset: 1px; border-color: var(--tinte); }
+.feld input:focus, .feld textarea:focus { outline: 3px solid var(--blau); outline-offset: 1px; border-color: var(--blau); }
 .wunsch { border: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 20px; }
 .wunsch legend { width: 100%; }
 .wunsch label { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 400; font-size: 1rem; margin: 0; }
-.wunsch input { width: 20px; height: 20px; accent-color: var(--tinte); }
+.wunsch input { width: 20px; height: 20px; accent-color: var(--blau); }
 .form-hinweis { margin: 12px 0 0; font-size: .9rem; color: var(--grau); }
-.form-hinweis.an { padding: 10px 14px; border-radius: 6px; background: var(--apricot-hell); color: var(--text); font-weight: 700; }
-.online-rechts { display: grid; gap: 0; border-top: 2px solid var(--tinte); }
+.form-hinweis.an { padding: 10px 14px; border-radius: 6px; background: var(--pfirsich-hell); color: var(--text); font-weight: 700; }
+.online-rechts { display: grid; gap: 0; border-top: 2px solid var(--tiefblau); }
 .online-punkt { padding: 22px 0; border-bottom: 1px solid var(--linie); }
 .online-punkt p { color: var(--grau); font-size: 1rem; }
 .online-punkt .btn { min-height: 48px; padding: 10px 20px; font-size: 1rem; }
 .downloads { list-style: none; margin: 0; padding: 0; }
 .downloads a { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 6px 0; font-weight: 700; text-decoration: none; }
 .downloads a:hover { text-decoration: underline; }
-.dl-typ { flex-shrink: 0; padding: 2px 6px; border: 1.5px solid var(--tinte); border-radius: 4px; font-size: .72rem; letter-spacing: .04em; }
+.dl-typ { flex-shrink: 0; padding: 2px 6px; border: 1.5px solid var(--tiefblau); border-radius: 4px; font-size: .72rem; letter-spacing: .04em; }
 
 @media (max-width: 960px) {
   .online { grid-template-columns: 1fr; gap: 36px; }
