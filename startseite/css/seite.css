@@ -232,24 +232,7 @@ section[id] { scroll-margin-top: 84px; }
   vertical-align: 2px;
 }
 .heute-zeile { display: none; }
-/* Buchen-Knopf in der Karte statt Telefonnummer */
-.zeiten-termin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 52px;
-  margin-top: 16px;
-  padding: 12px;
-  border-radius: 12px;
-  background: var(--blau);
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.05rem;
-  text-decoration: none;
-}
-.zeiten-termin:hover { background: var(--blau-dunkel); color: #fff; }
-.alle-zeiten { display: block; padding: 10px 0 2px; font-size: .95rem; font-weight: 700; }
+.alle-zeiten { display: block; padding: 14px 0 2px; font-size: .95rem; font-weight: 700; }
 
 /* Zwei Wege */
 .wege { background: var(--papier); padding: clamp(56px, 8vw, 96px) 0 0; }
@@ -516,7 +499,6 @@ section[id] { scroll-margin-top: 84px; }
   .hero-btns { margin-top: 20px; }
   .hero-btns .btn { flex: 1 1 auto; }
   /* Telefon steht in der Karte, im Hero nur einmal */
-  .zeiten-karte .zeiten-termin { display: none; } /* Handy: Buchen-Knopf steht schon im Hero direkt darüber */
   .btn { white-space: nowrap; padding: 12px 20px; }
   /* Karte: nur "Heute" + Telefon */
   .zeiten-karte { padding: 20px 20px 16px; }
