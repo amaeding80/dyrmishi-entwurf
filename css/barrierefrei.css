@@ -104,9 +104,9 @@
 
 /* Handy hoch: über der Leiste unten, nur Symbol */
 @media (max-width: 720px) and (min-height: 501px) {
-  .a11y-knopf { bottom: 84px; left: 12px; width: 52px; padding: 0; justify-content: center; }
+  .a11y-knopf { bottom: 94px; left: 12px; width: 52px; padding: 0; justify-content: center; }
   .a11y-knopf-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .a11y-menue { left: 12px; bottom: 146px; max-height: calc(100vh - 170px); }
+  .a11y-menue { left: 12px; bottom: 156px; max-height: calc(100vh - 180px); }
 }
 /* Handy quer: nur Symbol, links unten (Anruf-Knopf ist rechts) */
 @media (max-height: 500px) {
