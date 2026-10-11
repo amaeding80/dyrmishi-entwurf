@@ -520,15 +520,23 @@ section[id] { scroll-margin-top: 64px; }
 .zeiten-karte td { padding: 6px 0; border-bottom: 1px solid var(--linie); vertical-align: top; }
 .zeiten-karte td:first-child { width: 3em; color: var(--grau); }
 .zeiten-karte tr.heute td { font-weight: 700; color: var(--text); }
-.zeiten-tel {
-  display: block;
+/* Buchen-Knopf in der Karte (wie startseite/) */
+.zeiten-termin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
   margin-top: 12px;
-  font-family: var(--titel);
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--blau);
+  color: #fff;
   font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--tiefblau);
+  font-size: .95rem;
   text-decoration: none;
 }
+.zeiten-termin:hover { background: var(--blau-dunkel); color: #fff; }
 .alle-zeiten { display: block; padding-top: 6px; font-size: .85rem; font-weight: 700; }
 
 /* "Sie kennen uns schon?" - drei Punkte unter dem Hero */
