@@ -253,7 +253,7 @@ section[id] { scroll-margin-top: 84px; }
 
 /* Zwei Wege */
 .wege { background: var(--papier); padding: clamp(56px, 8vw, 96px) 0 0; }
-.wege-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.wege-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; }
 .weg { border-top: 2px solid var(--tiefblau); }
 .weg { padding: 40px 48px 40px 0; }
 .weg-neu { padding: 40px 0 40px 48px; border-left: 1px solid var(--linie); }
@@ -274,7 +274,7 @@ section[id] { scroll-margin-top: 84px; }
   font-size: .82rem !important;
 }
 /* Schnell-Links als kompakte Knöpfe nebeneinander (auch auf dem Handy in einer Reihe) */
-.weg-links { margin: 18px 0 0; display: grid; grid-auto-flow: column; grid-auto-columns: max-content; gap: 10px; }
+.weg-links { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .weg-links a {
   display: flex; align-items: center; justify-content: center;
   min-height: 48px; padding: 8px 18px;
@@ -516,7 +516,7 @@ section[id] { scroll-margin-top: 84px; }
   .hero-btns { margin-top: 20px; }
   .hero-btns .btn { flex: 1 1 auto; }
   /* Telefon steht in der Karte, im Hero nur einmal */
-  .hero-haupt { display: none; } /* Handy: Buchen-Knopf steht in der Karte direkt darunter */
+  .zeiten-karte .zeiten-termin { display: none; } /* Handy: Buchen-Knopf steht schon im Hero direkt darüber */
   .btn { white-space: nowrap; padding: 12px 20px; }
   /* Karte: nur "Heute" + Telefon */
   .zeiten-karte { padding: 20px 20px 16px; }
@@ -629,8 +629,8 @@ section[id] { scroll-margin-top: 84px; }
 }
 @media (max-width: 720px) {
   .feld-reihe { grid-template-columns: 1fr; }
-  .weg-links { grid-auto-columns: 1fr; gap: 8px; }
-  .weg-links a { min-height: 48px; padding: 6px 4px; font-size: .9rem; line-height: 1.2; }
+  .weg-links { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+  .weg-links a { min-height: 48px; padding: 6px 4px; font-size: .88rem; line-height: 1.2; }
 }
 
 /* Kontakt: drei Online-Wege als Knöpfe, Telefon nur klein in der Liste */
