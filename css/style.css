@@ -65,7 +65,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 1.0625rem; /* 17px, in rem damit "Schrift größer" greift */
   line-height: 1.65;
   color: var(--text);
   background: var(--papier);
@@ -730,7 +730,7 @@ section[id] { scroll-margin-top: 64px; }
 
 /* Handy hoch */
 @media (max-width: 720px) {
-  body { font-size: 16.5px; }
+  body { font-size: 1.03rem; }
   .hide-sm { display: none; }
   .gut-liste { grid-template-columns: 1fr; }
   .vorher { grid-template-columns: 1fr; }

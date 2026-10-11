@@ -56,7 +56,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--sans);
-  font-size: 19px; /* wie NHS: 19px am Computer, viele Patienten lesen ohne Brille */
+  font-size: 1.1875rem; /* 19px wie NHS, in rem damit "Schrift größer" greift */
   line-height: 1.6;
   color: var(--text);
   background: var(--papier);
@@ -497,7 +497,7 @@ section[id] { scroll-margin-top: 84px; }
 
 /* Handy hoch */
 @media (max-width: 720px) {
-  body { font-size: 17px; }
+  body { font-size: 1.0625rem; }
   .wrap { padding: 0 20px; }
   .kopf-inner { min-height: 66px; }
   .logo-zeichen { width: 40px; height: 40px; font-size: 1rem; }
