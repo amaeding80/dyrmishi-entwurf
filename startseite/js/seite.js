@@ -43,6 +43,9 @@
   var hinweis = document.getElementById('hinweis');
   var texte = {
     route: 'Nur Vorschau: Hier würde sich die Route in Ihrer Karten-App öffnen.',
+    anamnese: 'Beispiel: Hier käme der Anamnesebogen zum Ausfüllen am Handy oder Computer.',
+    rezept: 'Beispiel: Hier käme das Formular für Folgerezepte und Überweisungen.',
+    download: 'Beispiel: Hier läge das Dokument der Praxis als PDF.',
     mail: 'Nur Vorschau: Hier würde sich Ihr E-Mail-Programm öffnen.',
     recht: 'Nur Vorschau: Hier käme Ihr Impressum bzw. die Datenschutzerklärung.'
   };
@@ -100,4 +103,16 @@
   new IntersectionObserver(function (e) {
     leiste.classList.toggle('weg', e[0].isIntersecting);
   }, { threshold: 0 }).observe(btns);
+})();
+
+// Terminanfrage ist nur ein Beispiel - nichts verschicken, freundlicher Hinweis
+(function () {
+  var form = document.getElementById('terminanfrage');
+  if (!form) return;
+  var hinweis = document.getElementById('termin-hinweis');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    hinweis.textContent = 'Danke! Das ist nur ein Beispiel, es wurde nichts gesendet. Später käme hier: „Wir melden uns innerhalb von zwei Werktagen.“';
+    hinweis.classList.add('an');
+  });
 })();

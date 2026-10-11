@@ -95,7 +95,7 @@
         <li><h3>Was bringe ich mit?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
         <li><h3>Gesetzlich oder privat versichert?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
       </ul>
-      <p class="weg-links"><a href="#leistungen">Leistungen</a> <a href="#anfahrt">Anfahrt</a></p>
+      <p class="weg-links"><a href="#terminanfrage">Termin anfragen</a> <a href="#anamnese">Anamnesebogen vorab</a> <a href="#anfahrt">Anfahrt</a></p>
     </div>
   </div>
 </section>
@@ -142,6 +142,61 @@
       <a class="notfall-nr" href="tel:116117">116 117</a>
       <p>Im Notfall</p>
       <a class="notfall-nr notfall-112" href="tel:112">112</a>
+    </div>
+  </div>
+</section>
+
+<!-- Online erledigen - Beispiel-Funktionen, die dem Team Telefon und E-Mails abnehmen.
+     Alles Attrappe: Formular verschickt nichts, Downloads sind Platzhalter -->
+<section class="abschnitt abschnitt-online" id="online">
+  <div class="wrap">
+    <p class="beispiel-chip reveal">Beispiel &ndash; wird mit Ihnen abgestimmt</p>
+    <h2 class="reveal">Vieles geht auch ohne Anruf</h2>
+    <p class="abschnitt-text reveal">In Ruhe von zu Hause, wann es Ihnen passt. Die Praxis meldet sich bei Ihnen zurück.</p>
+
+    <div class="online">
+      <!-- Terminanfrage für neue Patienten -->
+      <form class="termin-form reveal" id="terminanfrage" novalidate aria-describedby="termin-hinweis">
+        <h3>Terminanfrage für neue Patienten</h3>
+        <div class="feld-reihe">
+          <p class="feld"><label for="t-name">Name, Vorname</label><input id="t-name" name="name" type="text" autocomplete="off"></p>
+          <p class="feld"><label for="t-geb">Geburtsdatum</label><input id="t-geb" name="geburtsdatum" type="text" inputmode="numeric" placeholder="TT.MM.JJJJ" autocomplete="off"></p>
+        </div>
+        <p class="feld"><label for="t-kontakt">Telefon oder E-Mail</label><input id="t-kontakt" name="kontakt" type="text" autocomplete="off"></p>
+        <p class="feld"><label for="t-anliegen">Ihr Anliegen</label><textarea id="t-anliegen" name="anliegen" rows="3"></textarea></p>
+        <fieldset class="feld wunsch">
+          <legend>Wunschzeit</legend>
+          <label><input type="radio" name="wunsch" value="vormittags" checked> vormittags</label>
+          <label><input type="radio" name="wunsch" value="nachmittags"> nachmittags</label>
+          <label><input type="radio" name="wunsch" value="egal"> egal</label>
+        </fieldset>
+        <button class="btn btn-dunkel" type="submit">Anfrage senden</button>
+        <p class="form-hinweis" id="termin-hinweis" role="status" aria-live="polite">Nur ein Beispiel. Es wird nichts gesendet.</p>
+      </form>
+
+      <div class="online-rechts">
+        <!-- Anamnesebogen vorab -->
+        <div class="online-punkt reveal" id="anamnese">
+          <h3>Anamnesebogen vorab ausfüllen</h3>
+          <p>Fragen zu Vorerkrankungen und Medikamenten schon zu Hause beantworten. Das spart Zeit im Wartezimmer.</p>
+          <a href="#anamnese" class="btn btn-rahmen" data-demo="anamnese">Bogen online ausfüllen</a>
+        </div>
+        <!-- Rezept / Überweisung für Stammpatienten -->
+        <div class="online-punkt reveal" id="rezept">
+          <h3>Rezept oder Überweisung anfragen</h3>
+          <p>Für Patientinnen und Patienten, die schon bei uns sind: Folgerezept oder Überweisung online anfragen, ohne Warteschleife.</p>
+          <a href="#rezept" class="btn btn-rahmen" data-demo="rezept">Anfrage stellen</a>
+        </div>
+        <!-- Downloads - nur Beispiel-Titel, keine echten Dokumente -->
+        <div class="online-punkt reveal" id="downloads">
+          <h3>Zum Herunterladen</h3>
+          <ul class="downloads">
+            <li><a href="#downloads" data-demo="download"><span class="dl-typ">PDF</span>Anamnesebogen zum Ausdrucken</a></li>
+            <li><a href="#downloads" data-demo="download"><span class="dl-typ">PDF</span>Einverständniserklärung Datenschutz</a></li>
+            <li><a href="#downloads" data-demo="download"><span class="dl-typ">PDF</span>Rezept- und Überweisungsanfrage</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
