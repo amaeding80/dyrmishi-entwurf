@@ -112,7 +112,7 @@
   var hinweis = document.getElementById('termin-hinweis');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    hinweis.textContent = 'Danke! Das ist nur ein Beispiel, es wurde nichts gesendet. Später käme hier: „Wir melden uns innerhalb von zwei Werktagen.“';
+    hinweis.textContent = 'Danke! Das ist nur ein Beispiel, es wurde nichts gesendet. Später stünde hier, wann sich die Praxis meldet.';
     hinweis.classList.add('an');
   });
 })();
