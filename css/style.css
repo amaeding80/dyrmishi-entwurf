@@ -1,27 +1,16 @@
 /* Entwurf Dyrmishi - Analyse-Seite */
 
-/* Schriften lokal (OFL) - kein Google Fonts
-   Lora für Überschriften (warm, ruhig), Source Sans 3 für Text (offen, gut lesbar)
-   Nachtrag: Atkinson raus, die durchgestrichene Null wirkte bei Uhrzeiten wie gestrichen */
+/* Schriften lokal (OFL): DM Sans für Überschriften (freundlich, modern), Source Sans 3 für Text (offen, gut lesbar) */
 @font-face {
-  font-family: "Lora";
-  src: url("../fonts/lora-latin-500-normal.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Lora";
-  src: url("../fonts/lora-latin-500-italic.woff2") format("woff2");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Lora";
-  src: url("../fonts/lora-latin-600-normal.woff2") format("woff2");
+  font-family: "DM Sans";
+  src: url("../fonts/dm-sans-latin-600-normal.woff2") format("woff2");
   font-weight: 600;
-  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/dm-sans-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
   font-display: swap;
 }
 @font-face {
@@ -37,25 +26,29 @@
   font-display: swap;
 }
 
-/* Farben - Nachtrag: mutiger, ohne Grün und ohne Blobs (wie die Startseite).
-   Tinte als große Fläche, Apricot als einziger warmer Akzent, Papier als Grund */
+/* Farben: helles Himmelblau als Grund, warmes Pfirsich als Akzent, kräftiges Blau für Knöpfe.
+   Bewusst nicht Arzt-Grün und nicht dunkel-förmlich (Alex: "sieht nach Kanzlei aus").
+   Kontraste: Weiß auf Blau 5,3:1 · Akzent auf Papier 6,2:1 · Grau auf Himmel 5,6:1 · Pfirsich auf Tiefblau 6,8:1 */
 :root {
-  --apricot: #f2b48a;
-  --apricot-hell: #fbe3d1;
-  --tinte: #1d2b4a;
-  --tinte-tief: #121c33;
-  --terrakotta: #a2471f;
-  --sand: #f1e8dc;
-  --sand-2: #e4d6c4;
-  --papier-2: #f6f1e8;
-  --papier: #fbf8f2;
-  --text: #1c2333;
-  --grau: #5a5f6b;
-  --linie: #e2d9cb;
-  --serif: "Lora", Georgia, "Times New Roman", serif;
+  --himmel: #dcecf8;
+  --himmel-hell: #eef5fb;
+  --blau: #2f6db5;          /* Knöpfe, Links */
+  --blau-dunkel: #255c9c;
+  --tiefblau: #1f4560;      /* nur kleine dunkle Kästen und Fuß */
+  --tiefblau-dunkel: #173548;
+  --pfirsich: #ffc9a8;
+  --pfirsich-hell: #ffe6d6;
+  --akzent: #23609e;        /* Akzentschrift auf hell */
+  --papier: #f7fafc;
+  --papier-2: #edf4f9;
+  --sand: #dbe8f1;
+  --text: #1b2b38;
+  --grau: #4d5d6b;
+  --linie: #dbe5ec;
+  --titel: "DM Sans", "Source Sans 3", Arial, sans-serif;
   --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --radius: 12px;
-  --schatten: 0 1px 2px rgba(20,30,60,.05), 0 12px 40px -16px rgba(20,30,60,.18);
+  --radius: 16px;
+  --schatten: 0 1px 2px rgba(31,69,96,.05), 0 12px 40px -16px rgba(31,69,96,.18);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -72,24 +65,33 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--serif);
-  font-weight: 500;
+  font-family: var(--titel);
+  font-weight: 700;
   line-height: 1.18;
   margin: 0 0 .6em;
   overflow-wrap: break-word;
   hyphens: auto;
 }
-h1 { font-size: clamp(2.05rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -.01em; }
-h2 { font-size: clamp(1.7rem, 3.3vw, 2.45rem); letter-spacing: -.01em; }
+h1 { font-size: clamp(2.05rem, 5vw, 3.4rem); line-height: 1.1; letter-spacing: -.03em; }
+h2 { font-size: clamp(1.7rem, 3.3vw, 2.45rem); letter-spacing: -.02em; }
 h3 { font-size: 1.28rem; }
-h1 em { font-style: normal; color: var(--terrakotta); } /* kein Kursiv, nur im Zitat */
+/* Name in der Anrede: Pfirsich-Textmarker wie auf der Startseite */
+h1 em {
+  font-style: normal;
+  background-image: linear-gradient(var(--pfirsich), var(--pfirsich));
+  background-size: 100% .34em;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 
 p { margin: 0 0 1em; }
 
-a { color: var(--tinte); }
-a:hover { color: var(--tinte-tief); }
+a { color: var(--blau); }
+a:hover { color: var(--blau-dunkel); }
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible {
-  outline: 3px solid var(--apricot);
+  outline: 3px solid var(--blau);
   outline-offset: 3px;
 }
 
@@ -109,10 +111,10 @@ section[id] { scroll-margin-top: 64px; }
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(251,248,242,.92);
+  background: rgba(247,250,252,.92);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
   backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid rgba(226,217,203,.8);
+  border-bottom: 1px solid var(--linie);
 }
 .topbar-inner {
   display: flex;
@@ -121,7 +123,8 @@ section[id] { scroll-margin-top: 64px; }
   height: 56px;
 }
 .topbar-titel {
-  font-family: var(--serif);
+  font-family: var(--titel);
+  font-weight: 700;
   font-size: 1.08rem;
   white-space: nowrap;
 }
@@ -136,18 +139,17 @@ section[id] { scroll-margin-top: 64px; }
   line-height: 16px;
   white-space: nowrap;
 }
-.topnav a:hover { color: var(--tinte); }
+.topnav a:hover { color: var(--blau); }
 
-/* Intro - ruhige Fläche mit Akzentlinie, keine Deko-Formen */
+/* Intro - heller Himmel-Verlauf wie der Hero der Startseite, keine Deko-Formen */
 .intro {
   position: relative;
   overflow: hidden;
   padding: clamp(64px, 11vw, 120px) 0 clamp(56px, 8vw, 90px);
-  background: var(--papier-2);
-  border-bottom: 1px solid var(--linie);
+  background: linear-gradient(180deg, var(--himmel) 0%, var(--himmel-hell) 100%);
 }
 .intro .wrap { position: relative; z-index: 1; }
-.kicker { font-size: .88rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--terrakotta); }
+.kicker { font-size: .95rem; font-weight: 700; color: var(--akzent); }
 .lead { font-size: clamp(1.1rem, 2vw, 1.28rem); line-height: 1.55; }
 .weiter {
   display: inline-block;
@@ -193,8 +195,8 @@ section[id] { scroll-margin-top: 64px; }
   top: .45em;
   width: 14px;
   height: 8px;
-  border-left: 2px solid var(--tinte);
-  border-bottom: 2px solid var(--tinte);
+  border-left: 2px solid var(--tiefblau);
+  border-bottom: 2px solid var(--tiefblau);
   transform: rotate(-45deg);
 }
 
@@ -235,9 +237,10 @@ section[id] { scroll-margin-top: 64px; }
   width: 46px;
   height: 46px;
   border-radius: 8px;
-  background: var(--tinte);
-  color: var(--apricot);
-  font-family: var(--serif);
+  background: var(--pfirsich);
+  color: var(--text);
+  font-family: var(--titel);
+  font-weight: 700;
   font-size: 1.35rem;
   display: flex;
   align-items: center;
@@ -266,7 +269,7 @@ section[id] { scroll-margin-top: 64px; }
   font-size: .9rem;
   color: var(--grau);
 }
-.werte b { display: block; font-size: 1.2rem; color: var(--text); font-family: var(--serif); }
+.werte b { display: block; font-size: 1.2rem; color: var(--text); font-family: var(--titel); }
 
 /* Weitere Hinweise zum Aufklappen */
 .weitere-titel { margin: 56px 0 18px; font-size: 1.4rem; }
@@ -277,7 +280,7 @@ section[id] { scroll-margin-top: 64px; }
   cursor: pointer;
   padding: 18px 36px 18px 0;
   position: relative;
-  font-family: var(--serif);
+  font-family: var(--titel);
   font-size: 1.12rem;
 }
 .weitere summary::-webkit-details-marker { display: none; }
@@ -289,11 +292,11 @@ section[id] { scroll-margin-top: 64px; }
   transform: translateY(-50%);
   font-family: var(--sans);
   font-size: 1.4rem;
-  color: var(--tinte);
+  color: var(--tiefblau);
   transition: transform .3s;
 }
 .weitere details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
-.weitere summary:hover { color: var(--tinte); }
+.weitere summary:hover { color: var(--tiefblau); }
 .weitere details > *:not(summary) { max-width: 760px; }
 .weitere details[open] { padding-bottom: 10px; }
 
@@ -309,7 +312,7 @@ section[id] { scroll-margin-top: 64px; }
   box-shadow: var(--schatten);
   padding: 30px 28px 14px;
 }
-.kachel h3 { color: var(--tinte); font-size: 1.25rem; }
+.kachel h3 { color: var(--tiefblau); font-size: 1.25rem; }
 .kachel p { color: var(--grau); font-size: .97rem; }
 
 /* Ausblick + kleines Mockup */
@@ -338,8 +341,8 @@ section[id] { scroll-margin-top: 64px; }
   top: .5em;
   width: 9px;
   height: 5px;
-  border-left: 1.5px solid var(--tinte);
-  border-bottom: 1.5px solid var(--tinte);
+  border-left: 1.5px solid var(--tiefblau);
+  border-bottom: 1.5px solid var(--tiefblau);
   transform: rotate(-45deg);
 }
 .ausblick-liste b { color: var(--text); }
@@ -364,7 +367,7 @@ section[id] { scroll-margin-top: 64px; }
   font-size: .75rem;
   letter-spacing: .04em;
 }
-.mock-titel { display: block; font-family: var(--serif); font-size: 1.15rem; margin-bottom: 12px; }
+.mock-titel { display: block; font-family: var(--titel); font-size: 1.15rem; margin-bottom: 12px; }
 .mock-feld {
   display: block;
   border: 1px solid var(--linie);
@@ -378,18 +381,18 @@ section[id] { scroll-margin-top: 64px; }
 .mock-feld span { color: var(--text); }
 .mock-wahl { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
 .mock-wahl span {
-  border: 1px solid var(--sand-2);
+  border: 1px solid var(--sand);
   border-radius: 20px;
   padding: 4px 12px;
   font-size: .82rem;
 }
-.mock-wahl .an { background: var(--tinte); color: #fff; border-color: var(--tinte); }
+.mock-wahl .an { background: var(--blau); color: #fff; border-color: var(--blau); }
 .mock-btn {
   display: block;
   text-align: center;
   padding: 10px 18px;
-  border-radius: 30px;
-  background: var(--tinte);
+  border-radius: 12px;
+  background: var(--blau);
   color: #fff;
   font-weight: 700;
   font-size: .9rem;
@@ -399,7 +402,7 @@ section[id] { scroll-margin-top: 64px; }
 .browser {
   border-radius: 26px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(20,30,60,.05), 0 40px 80px -30px rgba(20,30,60,.32);
+  box-shadow: 0 2px 4px rgba(31,69,96,.05), 0 40px 80px -30px rgba(31,69,96,.3);
   border: 1px solid var(--linie);
 }
 .browser-leiste {
@@ -407,9 +410,9 @@ section[id] { scroll-margin-top: 64px; }
   align-items: center;
   gap: 7px;
   padding: 13px 18px;
-  background: #efe9df;
+  background: #e6eef4;
 }
-.browser-leiste > span { width: 11px; height: 11px; border-radius: 50%; background: #d8cdbd; }
+.browser-leiste > span { width: 11px; height: 11px; border-radius: 50%; background: #c3d2de; }
 .browser-url {
   margin-left: 14px;
   flex: 1;
@@ -438,16 +441,17 @@ section[id] { scroll-margin-top: 64px; }
 .demo-zeichen {
   width: 42px; height: 42px;
   border-radius: 8px;
-  background: var(--tinte);
-  color: var(--apricot);
-  font-family: var(--serif);
+  background: var(--blau);
+  color: #fff;
+  font-family: var(--titel);
+  font-weight: 700;
   font-size: 1.05rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.demo-logo-name { display: block; font-family: var(--serif); font-size: 1.15rem; color: var(--text); }
+.demo-logo-name { display: block; font-family: var(--titel); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; color: var(--text); }
 .demo-logo-sub { font-size: .78rem; color: var(--grau); }
 .demo-menu {
   list-style: none;
@@ -458,62 +462,58 @@ section[id] { scroll-margin-top: 64px; }
   padding: 0;
   font-size: .9rem;
 }
-.demo-menu-kontakt { padding: 6px 14px; border-radius: 5px; background: var(--tinte); color: #fff; font-weight: 700; }
+.demo-menu-kontakt { padding: 6px 14px; border-radius: 10px; background: var(--blau); color: #fff; font-weight: 700; }
 .demo-burger { display: none; }
 
-/* Hero - dunkle Fläche, Karte rechts */
+/* Hero - heller Himmel-Verlauf, Karte rechts (wie startseite/) */
 .hero {
   display: grid;
   grid-template-columns: 1.3fr .7fr;
   gap: 44px;
   align-items: center;
   padding: clamp(32px, 5vw, 64px) 44px;
-  background: var(--tinte);
-  color: var(--papier);
-  border-bottom: 5px solid var(--apricot);
+  background: linear-gradient(180deg, var(--himmel) 0%, var(--himmel-hell) 100%);
+  color: var(--text);
 }
 .hero-chip {
   display: inline-block;
   margin-bottom: 16px;
-  padding: 4px 10px;
-  border: 1px solid rgba(242,180,138,.6);
-  border-radius: 4px;
-  color: var(--apricot);
-  font-size: .8rem;
+  padding: 5px 12px;
+  border-radius: 30px;
+  background: #ffe0cc;
+  color: #7a3a14;
+  font-size: .85rem;
   font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
 }
 .hero-titel {
   font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  font-weight: 700;
   line-height: 1.06;
-  letter-spacing: -.02em;
+  letter-spacing: -.03em;
   margin-bottom: 18px;
   max-width: 12.5em;
   hyphens: manual;
 }
 .unterstrich {
-  color: var(--apricot);
-  background-image: linear-gradient(var(--apricot), var(--apricot));
-  background-size: 100% 3px;
-  background-position: 0 96%;
+  background-image: linear-gradient(var(--pfirsich), var(--pfirsich));
+  background-size: 100% .34em;
+  background-position: 0 88%;
   background-repeat: no-repeat;
-  padding-bottom: 3px;
+  padding: 0 .06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
-.hero-sub { font-size: 1.04rem; line-height: 1.65; color: #d9deea; max-width: 31em; }
+.hero-sub { font-size: 1.04rem; line-height: 1.65; color: var(--grau); max-width: 31em; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-.btn-hell { background: var(--apricot); color: var(--tinte); }
-.btn-hell:hover { background: #f7c9a8; color: var(--tinte); }
-.hero .btn-rahmen-hell { border-color: rgba(251,248,242,.7); color: var(--papier); background: transparent; }
-.btn-rahmen-hell:hover { background: rgba(255,255,255,.08); color: #fff; }
+.hero .btn-rahmen { background: #fff; }
 
 /* Karte mit Sprechzeiten - statt Foto */
 .zeiten-karte {
-  background: var(--papier);
+  background: #fff;
   color: var(--text);
-  border-radius: 10px;
+  border-radius: var(--radius);
   padding: 22px 22px 16px;
-  box-shadow: 0 30px 60px -30px rgba(0,0,0,.5);
+  box-shadow: 0 20px 50px -24px rgba(31,69,96,.3);
 }
 .zeiten-karte h4 { font-size: 1.12rem; margin-bottom: 8px; }
 .zeiten-karte table { width: 100%; border-collapse: collapse; font-size: .9rem; }
@@ -523,9 +523,10 @@ section[id] { scroll-margin-top: 64px; }
 .zeiten-tel {
   display: block;
   margin-top: 12px;
-  font-family: var(--serif);
+  font-family: var(--titel);
+  font-weight: 700;
   font-size: 1.25rem;
-  color: var(--tinte);
+  color: var(--tiefblau);
   text-decoration: none;
 }
 .alle-zeiten { display: block; padding-top: 6px; font-size: .85rem; font-weight: 700; }
@@ -538,7 +539,7 @@ section[id] { scroll-margin-top: 64px; }
   padding: 28px 44px 36px;
 }
 .demo-bleibt-titel { grid-column: 1 / -1; font-size: 1.35rem; margin-bottom: 10px; }
-.demo-bleibt div { border-top: 2px solid var(--tinte); padding-top: 12px; }
+.demo-bleibt div { border-top: 2px solid var(--tiefblau); padding-top: 12px; }
 .demo-bleibt h5 { margin: 0 0 2px; font-size: 1rem; }
 .demo-bleibt p { margin: 0; font-size: .9rem; color: var(--grau); }
 
@@ -577,7 +578,7 @@ section[id] { scroll-margin-top: 64px; }
   gap: 9px;
   min-height: 48px;
   padding: 12px 26px;
-  border-radius: 6px;
+  border-radius: 12px;
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 700;
@@ -587,24 +588,20 @@ section[id] { scroll-margin-top: 64px; }
   cursor: pointer;
 }
 .btn:hover { transform: translateY(-1px); }
-.btn-primaer {
-  background: var(--tinte);
-  color: #fff;
-  box-shadow: 0 10px 24px -10px rgba(29,43,74,.5);
-}
-.btn-primaer:hover { background: var(--tinte-tief); color: #fff; }
-.btn-rahmen { border-color: var(--tinte); color: var(--tinte); background: transparent; }
-.btn-rahmen:hover { background: var(--sand); }
+.btn-blau { background: var(--blau); color: #fff; }
+.btn-blau:hover { background: var(--blau-dunkel); color: #fff; }
+.btn-rahmen { border-color: var(--blau); color: var(--blau); background: transparent; }
+.btn-rahmen:hover { background: var(--himmel-hell); color: var(--blau-dunkel); }
 
-/* WhatsApp bewusst nicht grün, sondern Apricot passend zur Seite */
+/* WhatsApp bewusst nicht grün, sondern Pfirsich passend zur Seite (Text 11:1) */
 .btn-wa {
-  background: var(--apricot);
-  color: var(--tinte);
-  border-color: var(--apricot);
+  background: var(--pfirsich);
+  color: var(--text);
+  border-color: var(--pfirsich);
 }
-.btn-wa:hover { background: #f7c9a8; color: var(--tinte); }
-.btn-mail { background: var(--tinte); color: #fff; }
-.btn-mail:hover { background: var(--tinte-tief); color: #fff; }
+.btn-wa:hover { background: #ffb88e; color: var(--text); }
+.btn-mail { background: var(--blau); color: #fff; }
+.btn-mail:hover { background: var(--blau-dunkel); color: #fff; }
 
 .icon { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
@@ -624,13 +621,13 @@ section[id] { scroll-margin-top: 64px; }
   margin: 30px 0 18px;
 }
 .kontakt-adresse { color: var(--grau); font-size: .95rem; }
-.signatur { margin-top: 40px; font-family: var(--serif); font-size: 1.1rem; }
-.signatur b { font-weight: 600; }
+.signatur { margin-top: 40px; font-family: var(--titel); font-size: 1.1rem; }
+.signatur b { font-weight: 700; }
 
 .footer {
   padding: 40px 0 50px;
-  background: var(--tinte-tief);
-  color: #cdd3e0;
+  background: var(--tiefblau-dunkel);
+  color: #d3e0ea;
   font-size: .9rem;
 }
 .footer p { margin: 0 0 .5em; }
@@ -652,14 +649,14 @@ section[id] { scroll-margin-top: 64px; }
   align-items: center;
   gap: 8px;
   padding: 11px 18px 11px 14px;
-  border-radius: 6px;
+  border-radius: 12px;
   border: 1.5px solid transparent;
   text-decoration: none;
   font-weight: 700;
   font-size: .92rem;
   box-shadow: 0 6px 20px rgba(0,0,0,.15);
 }
-.sticky-kontakt .btn-wa { border-color: var(--apricot); }
+.sticky-kontakt .btn-wa { border-color: var(--pfirsich); }
 .sticky-kontakt.weg { opacity: 0; transform: translateY(20px); pointer-events: none; }
 
 /* Scroll Animation - nur wenn JS an */
@@ -758,7 +755,7 @@ section[id] { scroll-margin-top: 64px; }
     flex-direction: row;
     gap: 10px;
     padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-    background: rgba(251,248,242,.95);
+    background: rgba(247,250,252,.95);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-top: 1px solid var(--linie);
@@ -804,12 +801,12 @@ section[id] { scroll-margin-top: 64px; }
   top: -60px;
   z-index: 100;
   padding: 10px 16px;
-  background: var(--tinte);
+  background: var(--tiefblau);
   color: #fff;
   border-radius: 6px;
 }
 .skip:focus { top: 12px; color: #fff; }
 
 /* Entlastung hervorheben: die wichtigste Kachel */
-.kachel-betont { border-top: 4px solid var(--terrakotta); background: var(--apricot-hell); }
-.link-pfeil { font-weight: 700; color: var(--terrakotta); text-underline-offset: 3px; }
+.kachel-betont { border-top: 4px solid var(--blau); background: var(--pfirsich-hell); }
+.link-pfeil { font-weight: 700; color: var(--blau); text-underline-offset: 3px; }
