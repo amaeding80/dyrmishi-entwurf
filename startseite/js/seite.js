@@ -79,3 +79,13 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
   els.forEach(function (el) { io.observe(el); });
 })();
+
+// Handy-Leiste erst zeigen, wenn die Buttons im Hero weggescrollt sind (sonst doppelt)
+(function () {
+  var leiste = document.querySelector('.handy-leiste');
+  var btns = document.querySelector('.hero-btns');
+  if (!leiste || !btns || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) {
+    leiste.classList.toggle('weg', e[0].isIntersecting);
+  }, { threshold: 0 }).observe(btns);
+})();
