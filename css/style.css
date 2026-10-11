@@ -772,6 +772,8 @@ section[id] { scroll-margin-top: 64px; }
   .vorher { grid-template-columns: 1fr; }
   .punkt { grid-template-columns: 1fr; gap: 6px; padding: 24px 20px 10px; }
   .punkt-nr { width: 40px; height: 40px; font-size: 1.15rem; }
+  .werte li { flex: 1 1 40%; padding: 8px 12px; }
+  .werte b { font-size: 1.02rem; }
   .kacheln { grid-template-columns: 1fr; }
   .ausblick { padding: 26px 20px; margin-top: 40px; }
   .demo-nav { padding: 16px 20px; }

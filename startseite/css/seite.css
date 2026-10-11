@@ -422,7 +422,7 @@ section[id] { scroll-margin-top: 84px; }
 .fuss p { margin: 0 0 .4em; }
 .fuss-name { font-family: var(--serif); font-size: 1.15rem; color: #fff; }
 .fuss-links a { color: #cfdcd4; margin-left: 18px; padding: 10px 0; display: inline-block; }
-.fuss-klein { margin-top: 20px !important; font-size: .8rem; opacity: .7; }
+.fuss .fuss-klein { margin: 20px auto 0; font-size: .8rem; opacity: .7; }
 
 /* Buttons */
 .btn {
