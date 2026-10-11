@@ -504,7 +504,7 @@ section[id] { scroll-margin-top: 64px; }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 .btn-hell { background: var(--apricot); color: var(--tinte); }
 .btn-hell:hover { background: #f7c9a8; color: var(--tinte); }
-.btn-rahmen-hell { border-color: rgba(251,248,242,.7); color: var(--papier); background: transparent; }
+.hero .btn-rahmen-hell { border-color: rgba(251,248,242,.7); color: var(--papier); background: transparent; }
 .btn-rahmen-hell:hover { background: rgba(255,255,255,.08); color: #fff; }
 
 /* Karte mit Sprechzeiten - statt Foto */
