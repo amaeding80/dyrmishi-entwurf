@@ -46,7 +46,6 @@
     anamnese: 'Beispiel: Hier käme der Anamnesebogen zum Ausfüllen am Handy oder Computer.',
     rezept: 'Beispiel: Hier käme das Formular für Folgerezepte und Überweisungen.',
     download: 'Beispiel: Hier läge das Dokument der Praxis als PDF.',
-    mail: 'Nur Vorschau: Hier würde sich Ihr E-Mail-Programm öffnen.',
     recht: 'Nur Vorschau: Hier käme Ihr Impressum bzw. die Datenschutzerklärung.'
   };
   var timer;
@@ -63,12 +62,12 @@
       zeigen(el);
     });
   });
-  // Telefon-Links: am Computer nur Hinweis, auf dem Handy echt anrufen lassen
+  // Notruf-Links (116 117, 112): am Computer nur Hinweis, auf dem Handy echt anrufen lassen
   if (!window.matchMedia('(pointer: coarse)').matches) {
     document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
-        hinweis.textContent = 'Nur Vorschau: Auf dem Handy würde hier direkt angerufen.';
+        hinweis.textContent = 'Auf dem Handy würde hier direkt angerufen.';
         hinweis.classList.add('an');
         clearTimeout(timer);
         timer = setTimeout(function () { hinweis.classList.remove('an'); }, 3500);

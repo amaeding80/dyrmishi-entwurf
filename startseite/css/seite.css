@@ -140,7 +140,7 @@ section[id] { scroll-margin-top: 84px; }
 .logo-text { line-height: 1.2; }
 .logo-name { display: block; font-family: var(--titel); font-weight: 700; font-size: 1.22rem; letter-spacing: -.01em; }
 .logo-sub { display: block; font-size: .82rem; color: var(--grau); }
-.nur-schmal, .nur-handy { display: none; }
+.nur-schmal { display: none; }
 
 .menue { display: flex; align-items: center; gap: 2px; }
 .menue a {
@@ -232,17 +232,23 @@ section[id] { scroll-margin-top: 84px; }
   vertical-align: 2px;
 }
 .heute-zeile { display: none; }
-.zeiten-tel {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 6px 0;
-  font-family: var(--titel);
+/* Buchen-Knopf in der Karte statt Telefonnummer */
+.zeiten-termin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--blau);
+  color: #fff;
   font-weight: 700;
-  font-size: 1.55rem;
-  color: var(--tiefblau);
+  font-size: 1.05rem;
   text-decoration: none;
 }
-.zeiten-tel:hover { color: var(--blau); }
+.zeiten-termin:hover { background: var(--blau-dunkel); color: #fff; }
 .alle-zeiten { display: block; padding: 10px 0 2px; font-size: .95rem; font-weight: 700; }
 
 /* Zwei Wege */
@@ -362,16 +368,6 @@ section[id] { scroll-margin-top: 84px; }
 
 /* Kontakt */
 .kontakt { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: end; }
-.kontakt-tel {
-  display: inline-block;
-  font-family: var(--titel);
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-  color: var(--tiefblau);
-  text-decoration: none;
-  border-bottom: 4px solid var(--pfirsich);
-  line-height: 1.2;
-}
-.kontakt-tel:hover { color: var(--blau); }
 .kontakt-liste { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--tiefblau); }
 .kontakt-liste li { display: flex; flex-direction: column; padding: 16px 0; border-bottom: 1px solid var(--linie); font-size: 1.1rem; }
 .kontakt-liste span { color: var(--grau); font-size: .95rem; }
@@ -410,7 +406,7 @@ section[id] { scroll-margin-top: 84px; }
 .btn-rahmen:hover { background: var(--himmel-hell); color: var(--blau-dunkel); }
 .icon { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
-.handy-leiste, .anruf-rund { display: none; }
+.handy-leiste { display: none; }
 
 /* Hinweis bei Klick auf Attrappen */
 .hinweis-toast {
@@ -510,28 +506,13 @@ section[id] { scroll-margin-top: 84px; }
   .hero-btns { margin-top: 20px; }
   .hero-btns .btn { flex: 1 1 auto; }
   /* Telefon steht in der Karte, im Hero nur einmal */
-  .hero-anruf { display: none; }
+  .hero-haupt { display: none; } /* Handy: Buchen-Knopf steht in der Karte direkt darunter */
   .btn { white-space: nowrap; padding: 12px 20px; }
   /* Karte: nur "Heute" + Telefon */
   .zeiten-karte { padding: 20px 20px 16px; }
   .karte-titel { font-size: 1.1rem; margin-bottom: 4px; }
   .js .karte-tabelle { display: none; }
   .js .heute-zeile { display: block; margin: 0; font-size: 1.05rem; font-weight: 700; }
-  .nur-handy { display: inline; }
-  .zeiten-tel {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 14px;
-    padding: 12px;
-    border-radius: 12px;
-    background: var(--blau);
-    color: #fff;
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 1.08rem;
-  }
-  .zeiten-tel:hover { color: #fff; }
   .wege-inner { grid-template-columns: 1fr; }
   .weg, .weg-neu { padding: 28px 0; border-left: 0; }
   .weg-neu { border-top: 1px solid var(--linie); }
@@ -579,25 +560,10 @@ section[id] { scroll-margin-top: 84px; }
   .btn { font-size: .95rem; padding: 12px 16px; }
 }
 
-/* Handy quer: Kopf nicht festkleben, Leiste weg, dafür runder Anruf-Knopf */
+/* Handy quer: Kopf nicht festkleben, Leiste weg (zu wenig Höhe) */
 @media (max-height: 500px) and (orientation: landscape) {
   .kopf { position: static; }
   .handy-leiste { display: none; }
-  .anruf-rund {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    right: 14px;
-    bottom: 14px;
-    z-index: 25;
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    background: var(--blau);
-    color: #fff;
-    box-shadow: 0 8px 20px rgba(0,0,0,.25);
-  }
-  .anruf-rund .icon { width: 24px; height: 24px; }
   .hero { padding-top: 24px; padding-bottom: 28px; }
   .hero-titel { font-size: 2rem; }
 }
@@ -667,4 +633,10 @@ section[id] { scroll-margin-top: 84px; }
   .termin-form { padding: 22px 18px 18px; }
   .feld-reihe { grid-template-columns: 1fr; }
   .weg-links { flex-wrap: wrap; gap: 4px 20px; }
+}
+
+/* Kontakt: drei Online-Wege als Knöpfe, Telefon nur klein in der Liste */
+.kontakt-wege { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+@media (max-width: 720px) {
+  .kontakt-wege .btn { flex: 1 1 100%; }
 }

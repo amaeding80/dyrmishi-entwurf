@@ -45,14 +45,16 @@
       <a href="#sprechzeiten">Sprechzeiten</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#anfahrt">Anfahrt</a>
-      <a href="#kontakt" class="menue-kontakt">Kontakt</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#termin" class="menue-kontakt">Termin buchen</a>
     </nav>
   </div>
 </header>
 
 <main id="inhalt" tabindex="-1">
 
-<!-- Hero - dunkle Farbfläche statt Foto, Übernahme steht im wichtigsten Satz -->
+<!-- Hero - heller Verlauf statt Foto, Übernahme steht im wichtigsten Satz.
+     Hauptknopf ist die Online-Buchung: entlastet das Telefon der Praxis -->
 <section class="hero-bereich">
   <div class="wrap hero">
     <div class="hero-text">
@@ -60,15 +62,15 @@
       <h1 class="hero-titel">Ihre Hausarztpraxis in Oberschleißheim &ndash; <span class="unterstrich">jetzt mit Dr.&nbsp;Dyrmishi.</span></h1>
       <p class="hero-sub">Dr. med. Erion Dyrmishi, hausärztlich tätiger Internist, führt die Praxis von Frau Dr. Bajorski-Brandt weiter. An der gewohnten Adresse und mit dem bewährten Praxisteam.</p>
       <div class="hero-btns">
-        <a href="tel:+498937558460" class="btn btn-blau hero-anruf">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-          089&nbsp;3755&nbsp;8460 anrufen
+        <a href="#termin" class="btn btn-blau hero-haupt">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zM5 10h14v10H5V10zm2 2v2h2v-2H7zm4 0v2h2v-2h-2z"/></svg>
+          Termin online buchen
         </a>
         <a href="#neu" class="btn btn-rahmen">Neu in der Praxis?</a>
       </div>
     </div>
 
-    <!-- Sprechzeiten-Karte statt Foto. Handy: nur "Heute" + Telefon (per CSS/JS) -->
+    <!-- Sprechzeiten-Karte statt Foto. Handy: nur "Heute" + Buchen-Knopf (per CSS/JS) -->
     <aside class="zeiten-karte" aria-labelledby="karte-titel">
       <h2 class="karte-titel" id="karte-titel">Sprechzeiten</h2>
       <p class="heute-zeile js-heute" hidden></p>
@@ -79,7 +81,7 @@
         <tr data-tag="4"><th scope="row">Do.</th><td>08:00&ndash;12:00 &middot; 13:00&ndash;17:00</td></tr>
         <tr data-tag="5"><th scope="row">Fr.</th><td>08:00&ndash;12:00</td></tr>
       </table>
-      <a class="zeiten-tel" href="tel:+498937558460"><span class="nur-handy">Anrufen:&nbsp;</span>089&nbsp;3755&nbsp;8460</a>
+      <a class="zeiten-termin" href="#termin"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zM5 10h14v10H5V10zm2 2v2h2v-2H7zm4 0v2h2v-2h-2z"/></svg>Termin online buchen</a>
       <a class="alle-zeiten" href="#sprechzeiten">Alle Sprechzeiten und Notdienst &rarr;</a>
     </aside>
   </div>
@@ -93,9 +95,10 @@
       <p class="weg-text">Dann ist vieles wie gewohnt:</p>
       <ul class="weg-liste">
         <li><h3>Gleiche Adresse</h3><p>Mittenheimer Str. 52, HIT-Gebäude, 1.&nbsp;Stock</p></li>
-        <li><h3>Gleiche Nummern</h3><p>Telefon und Fax bleiben, wie sie sind.</p></li>
+        <li><h3>Neu: vieles geht online</h3><p>Termine, Folgerezepte und Überweisungen jetzt auch ohne Anruf.</p></li>
         <li><h3>Vertraute Gesichter</h3><p>Das bewährte Praxisteam ist weiter für Sie da.</p></li>
       </ul>
+      <p class="weg-links"><a href="#termin">Termin buchen</a> <a href="#rezept">Rezept online anfragen</a></p>
     </div>
     <div class="weg weg-neu" id="neu">
       <h2 class="weg-titel">Zum ersten Mal hier?</h2>
@@ -106,7 +109,7 @@
         <li><h3>Was bringe ich mit?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
         <li><h3>Gesetzlich oder privat versichert?</h3><p class="platzhalter">wird mit der Praxis abgestimmt</p></li>
       </ul>
-      <p class="weg-links"><a href="#terminanfrage">Termin anfragen</a> <a href="#anamnese">Anamnesebogen vorab</a> <a href="#anfahrt">Anfahrt</a></p>
+      <p class="weg-links"><a href="#termin">Termin online buchen</a> <a href="#anamnese">Anamnesebogen online</a> <a href="#anfahrt">Anfahrt</a></p>
     </div>
   </div>
 </section>
@@ -246,17 +249,22 @@
   </div>
 </section>
 
-<!-- Kontakt - Telefonnummer groß, sie ist das Wichtigste -->
+<!-- Kontakt - am schnellsten online. Telefon und Fax nur klein, für alle, die es brauchen -->
 <section class="abschnitt abschnitt-kontakt" id="kontakt">
   <div class="wrap kontakt">
     <div>
-      <h2 class="reveal">Wir sind gern für Sie da</h2>
-      <p class="reveal">Für Termine und Fragen rufen Sie uns am besten während der Sprechzeiten an.</p>
-      <a class="kontakt-tel reveal" href="tel:+498937558460">089&nbsp;3755&nbsp;8460</a>
+      <h2 class="reveal">Am schnellsten geht es online</h2>
+      <p class="reveal">Termine, Rezepte und Unterlagen erledigen Sie bequem von zu Hause, rund um die Uhr. So bleibt unserem Team mehr Zeit für die Patienten in der Praxis.</p>
+      <div class="kontakt-wege reveal">
+        <a href="#termin" class="btn btn-blau"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zM5 10h14v10H5V10zm2 2v2h2v-2H7zm4 0v2h2v-2h-2z"/></svg>Termin online buchen</a>
+        <a href="#rezept" class="btn btn-rahmen">Rezept oder Überweisung</a>
+        <a href="#anamnese" class="btn btn-rahmen">Anamnesebogen</a>
+      </div>
     </div>
     <ul class="kontakt-liste reveal">
-      <li><span>Telefax</span>089&nbsp;3755&nbsp;8461</li>
-      <li><span>E-Mail</span><a href="mailto:praxis@dr-bajorski.de" data-demo="mail">praxis@dr-bajorski.de</a><small class="platzhalter">Adresse von der bisherigen Seite, wird abgestimmt</small></li>
+      <li><span>Adresse</span>Mittenheimer Str.&nbsp;52, HIT-Gebäude, 1.&nbsp;Stock, 85764 Oberschleißheim</li>
+      <li><span>Telefon / Telefax</span>089&nbsp;3755&nbsp;8460 / 089&nbsp;3755&nbsp;8461</li>
+      <li><span>Notfall außerhalb der Sprechzeiten</span>Bereitschaftsdienst 116&nbsp;117 &middot; Notruf 112</li>
     </ul>
   </div>
 </section>
@@ -274,14 +282,11 @@
   <p class="wrap fuss-klein">Entwurf von Alexander Mäding, Webdesign für Praxen &middot; Angaben von dr-bajorski.de, Stand 11.10.2026</p>
 </footer>
 
-<!-- Handy hoch: Leiste unten. Handy quer: runder Anruf-Knopf -->
+<!-- Handy: Leiste unten mit Online-Buchung und Rezept (kein Anruf-Knopf, das Telefon soll entlastet werden) -->
 <div class="handy-leiste">
-  <a href="tel:+498937558460" class="btn btn-blau">Anrufen</a>
-  <a href="#sprechzeiten" class="btn btn-rahmen">Sprechzeiten</a>
+  <a href="#termin" class="btn btn-blau">Termin buchen</a>
+  <a href="#rezept" class="btn btn-rahmen">Rezept</a>
 </div>
-<a class="anruf-rund" href="tel:+498937558460" aria-label="Praxis anrufen: 089 3755 8460">
-  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-</a>
 
 <p class="hinweis-toast" id="hinweis" role="status" aria-live="polite"></p>
 
